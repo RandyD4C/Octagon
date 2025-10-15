@@ -21,11 +21,11 @@ export default function Catalogue() {
                     href={p.file}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block p-4 border rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition"
+                    className="block p-4 border rounded hover:bg-gray-50 transition"
                 >
                     <h2 className="text-xl font-semibold text-[#154A9A]">{p.name}</h2>
                     {p.description && (
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{p.description}</p>
+                        <p className="text-sm text-gray-600 mt-1">{p.description}</p>
                     )}
                 </a>
             </li>
