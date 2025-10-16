@@ -1,3 +1,5 @@
+import siteConfig from '../config/siteConfig';
+
 export default function Contact() { 
     return (
         <div>
