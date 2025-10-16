@@ -1,11 +1,13 @@
 import Link from 'next/link'
+import siteConfig from '../config/siteConfig'
+
 export default function Home() { 
     return (
         <div>
             <section className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                 <div className='p-6 border rounded-lg'>
                     <h2 className='font-semibold'>Company Profile</h2>
-                    <p className='text-sm mt-2'>20 years of brand focus — empowering intelligent mold strategy across 60+ regions, trusted by 20,000 customers.</p>
+                    <p className='text-sm mt-2'>{siteConfig.tagline}</p>
                     <Link className='text-sm text-blue-600 mt-3 inline-block' href='/about'>Read more →</Link>
                 </div>
                 <div className='p-6 border rounded-lg'>
