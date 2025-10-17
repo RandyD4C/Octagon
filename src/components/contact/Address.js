@@ -1,5 +1,5 @@
 export default function Address(address) {
-    const map_source = `https://www.google.com/maps/embed/v1/place?q=place_id:ElcyLCBMZWJ1aHJheWEgTWF5YW5nIFBhc2lyLCBCYW5kYXIgQmF5YW4gQmFydSwgMTE5MDAgQmF5YW4gTGVwYXMsIFB1bGF1IFBpbmFuZywgTWFsYXlzaWEiMBIuChQKEgk3zIaSbsBKMBHxsggAPPq0oxACKhQKEgmdA58obMBKMBFZUk6eFlaXIw&key=${process.env.GOOGLE_MAP_API}`;
+    const map_source = `https://www.google.com/maps/embed/v1/place?q=place_id:ElcyLCBMZWJ1aHJheWEgTWF5YW5nIFBhc2lyLCBCYW5kYXIgQmF5YW4gQmFydSwgMTE5MDAgQmF5YW4gTGVwYXMsIFB1bGF1IFBpbmFuZywgTWFsYXlzaWEiMBIuChQKEgk3zIaSbsBKMBHxsggAPPq0oxACKhQKEgmdA58obMBKMBFZUk6eFlaXIw&key=${process.env.NEXT_PUBLIC_GOOGLE_MAP_API}`;
 
     return (
         <div className='mt-4 bg-white p-4 border rounded'>
