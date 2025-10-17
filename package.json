@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "generate:catalogue": "node scripts/generateCatalogue.js",
+    "dev": "npm run generate:catalogue && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

@@ -9,6 +9,7 @@ coverage/
 # production
 .next/
 out/
+public/data/_local_catalogues.json
 
 # misc
 .DS_Store

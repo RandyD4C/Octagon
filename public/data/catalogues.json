@@ -4,27 +4,27 @@
     "name": "Insert Nuts",
     "category": "Nuts",
     "description": "Threaded Inserts for Plastic Parts.",
-    "file": "../pdfs/insert-nuts.pdf"
+    "file": "../catalogues/insert-nuts.pdf"
   },
   {
     "id": "2",
     "name": "Sheet Metal Fasteners",
     "category": "Fasteners",
     "description": "Fasteners for Sheet Metal Applications.",
-    "file": "../pdfs/sheet-metal-fasteners.pdf"
+    "file": "../catalogues/sheet-metal-fasteners.pdf"
   },
   {
     "id": "3",
     "name": "Helicoil and Keensert",
     "category": "Inserts",
     "description": "Wire Thread Inserts, Keylocking Threaded Inserts, and Solid Threaded Inserts for Metal.",
-    "file": "../pdfs/helicoil-and-keensert.pdf"
+    "file": "../catalogues/helicoil-and-keensert.pdf"
   },
   {
     "id": "4",
     "name": "Standoffs",
     "category": "Inserts",
     "description": "Standoffs series for PCB and other applications.",
-    "file": "../pdfs/standoffs.pdf"
+    "file": "../catalogues/standoffs.pdf"
   }
 ]
