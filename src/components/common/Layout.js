@@ -10,7 +10,7 @@ export default function Layout({ children }) {
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900">
       {/* Navbar */}
-      <header className="bg-brand text-white">
+      <header className="bg-brand text-white sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             {/* Company Name */}
             <Link href="/">
