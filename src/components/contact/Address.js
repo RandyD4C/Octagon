@@ -1,5 +1,4 @@
-export default function Address(address) { 
-    console.log(address);
+export default function Address(address) {
     return (
         <div className='mt-4 bg-white p-4 border rounded'>
             <p>
