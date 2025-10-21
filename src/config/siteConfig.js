@@ -13,7 +13,7 @@ const SITE_CONFIG = {
     },
     james: {
       email: "james.koay@octagon-mold.com",
-      phone: "+6016 420 5848",
+      phone: "+60 16-420 5848",
       position: "Sales Manager",
     },
     randy: {
