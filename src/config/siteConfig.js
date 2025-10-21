@@ -2,7 +2,7 @@ const is_dev = process.env.NODE_ENV === "development";
 
 const SITE_CONFIG = {
   company_name: "Octagon Precision Mold",
-  company_address: "No 2, Lebuh Mayang Pasir, Bayan Baru 11950, Pulau Pinang, MALAYSIA",
+  company_address: "No 2, Lebuhraya Mayang Pasir, Bayan Baru 11950, Pulau Pinang, MALAYSIA",
   tagline:
     "20 years of brand focus — empowering intelligent mold strategic service providers, serving 60+ countries and 20,000 customers worldwide.",
   contacts: {
