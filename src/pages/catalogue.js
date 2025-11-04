@@ -22,7 +22,7 @@ export default function Catalogue() {
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      <PageHeader title="Product Catalogue" />
+      <PageHeader title="Catalogue" />
       <SearchBar value={query} onChange={setQuery} />
       <CatalogueList catalogues={filtered}/>
     </div>
