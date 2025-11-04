@@ -13,6 +13,13 @@ export default function CatalogueList({ catalogues }) {
                     {item.description && (
                         <p className="text-sm text-gray-600 mt-1">{item.description}</p>
                     )}
+                    {item.preview && (
+                        <img
+                            src={item.preview}
+                            alt={item.name}
+                            className="mt-4 w-64 rounded-lg"
+                        />
+                    )}
                 </a>
             ))}
         </div>
