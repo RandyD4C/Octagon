@@ -5,9 +5,11 @@ import Address from "../components/contact/Address"
 
 export default function Contact() {
     return (
-        <div className="p-6 max-w-4xl mx-auto">
-            <PageHeader title="Contact Us" />
-            <ContactList contacts={siteConfig.contacts} />
+        <div>
+            <div className="p-6 max-w-4xl mx-auto">
+                <PageHeader title="Contact Us" />
+                <ContactList contacts={siteConfig.contacts} />
+            </div>
             <Address address={siteConfig.company_address} />
         </div>
     )
