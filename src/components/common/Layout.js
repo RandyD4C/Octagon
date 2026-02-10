@@ -12,11 +12,11 @@ export default function Layout({ children }) {
       {/* Navbar */}
       <header className="bg-brand text-white sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            {/* Company Name */}
-            <Link href="/">
-                <h1 className="text-2xl font-bold">{siteConfig.company_name}</h1>
-            </Link>
-          
+          {/* Company Name */}
+          <Link href="/">
+            <h1 className="text-2xl font-bold">{siteConfig.company_name}</h1>
+          </Link>
+
           {/* Hamburger for mobile */}
           <button
             className="sm:hidden p-2"
@@ -63,7 +63,7 @@ export default function Layout({ children }) {
       </header>
 
       {/* Page Content */}
-      <main className="flex-grow max-w-6xl mx-auto w-full px-6 py-8">{children}</main>
+      <main className="flex-grow w-100% py-8">{children}</main>
 
       {/* Footer */}
       <footer className="bg-gray-100 text-center py-4 mt-8 text-sm text-gray-500">
