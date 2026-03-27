@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "generate:catalogue": "node scripts/generateCatalogue.js",
-    "dev": "npm run generate:catalogue && next dev",
+    "dev": "npm run generate:catalogue && next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -13,10 +13,14 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "aos": "^3.0.0-beta.6",
+    "html-react-parser": "^5.2.17",
     "lucide-react": "^0.545.0",
+    "mammoth": "^1.11.0",
     "next": "14.2.3",
+    "nodemailer": "^8.0.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-google-recaptcha": "^3.1.0"
   },
   "devDependencies": {
     "autoprefixer": "10.4.14",

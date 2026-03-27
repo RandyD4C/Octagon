@@ -17,14 +17,16 @@ export default function Catalogue() {
 
   const [query, setQuery] = useState('')
   const filtered = catalogues.filter(p =>
-      p.name.toLowerCase().includes(query.toLowerCase())
+    p.name.toLowerCase().includes(query.toLowerCase())
   )
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="w-full">
       <PageHeader title="Catalogue" />
-      <SearchBar value={query} onChange={setQuery} />
-      <CatalogueList catalogues={filtered}/>
+      <div className="p-6 max-w-4xl mx-auto">
+        <SearchBar value={query} onChange={setQuery} />
+        <CatalogueList catalogues={filtered} />
+      </div>
     </div>
   )
 }

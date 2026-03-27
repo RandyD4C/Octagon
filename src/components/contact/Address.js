@@ -1,14 +1,16 @@
+import styles from "../../styles/contact.module.css"
+
 export default function Address(address) {
     const map_source = `https://www.google.com/maps/embed/v1/place?q=place_id:ElcyLCBMZWJ1aHJheWEgTWF5YW5nIFBhc2lyLCBCYW5kYXIgQmF5YW4gQmFydSwgMTE5MDAgQmF5YW4gTGVwYXMsIFB1bGF1IFBpbmFuZywgTWFsYXlzaWEiMBIuChQKEgk3zIaSbsBKMBHxsggAPPq0oxACKhQKEgmdA58obMBKMBFZUk6eFlaXIw&key=${process.env.NEXT_PUBLIC_GOOGLE_MAP_API}`;
 
     return (
-        <div className='mt-4 bg-white w-full'>
+        <div className={styles.addressSection}>
             <p>
                 <strong>Address:</strong> {address.address}
             </p>
 
             {/* Google Map Embed */}
-            <div className="mt-6 border rounded-lg overflow-hidden shadow-sm">
+            <div className={styles.addressMap}>
                 <iframe width="100%"
                     height="500"
                     allowFullScreen=""
@@ -18,5 +20,5 @@ export default function Address(address) {
                 </iframe>
             </div>
         </div>
-    ) 
+    )
 }

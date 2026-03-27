@@ -10,7 +10,7 @@ export default function Animate({ children }) {
             duration: 400,
             easing: 'ease',
             delay: 100,
-            once: false,
+            once: true,
             anchorPlacement: 'top-bottom',
         });
     }, []);

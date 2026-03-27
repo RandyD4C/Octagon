@@ -1,12 +1,12 @@
 import fs from "fs";
 import path from "path";
 
-// 📁 output file path
+// output file path
 const output_dir = path.join(process.cwd(), "public/data");
 const output_file = path.join(output_dir, "_local_catalogues.json");
 const number_of_entries = 10;
 
-// 🧩 helper functions
+// helper functions
 const randomString = (length = 8) =>
   Math.random().toString(36).substring(2, 2 + length);
 

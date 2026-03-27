@@ -1,12 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Custom global styles */
 body {
-  font-family: system-ui, sans-serif;
+  @apply text-slate-900 bg-white selection:bg-blue-100 selection:text-blue-900;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-a {
-  transition: color 0.2s ease;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply tracking-tight;
+}
+
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Custom Utilities */
+.text-brand {
+  @apply text-blue-600;
+}
+
+.bg-brand {
+  @apply bg-blue-600;
+}
+
+/* Smooth Scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-aos="stretch-x"] {
+  transform: scaleX(0);
+  transition-property: transform;
+}
+
+[data-aos="stretch-x"].aos-animate {
+  transform: scaleX(1);
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out forwards;
 }

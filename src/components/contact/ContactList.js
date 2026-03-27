@@ -1,23 +1,28 @@
 import { capitalize, cleanPhoneNumber } from "../../utils/formatters"
+import styles from "../../styles/contact.module.css"
 
 export default function ContactList({ contacts }) {
-    const content_style = "text-sm text-gray-600 mt-1",
-        whatsapp_link = "https://wa.me/";
-    
+    const whatsapp_link = "https://wa.me/";
+
     return (
-        <div className="grid gap-4">
+        <div className={styles.list}>
             {Object.entries(contacts).map((user) => (
-                <div key={user[0]} className="block p-4 rounded-lg border">
-                    <a href={`${whatsapp_link + cleanPhoneNumber(user[1].phone)}`} 
+                <div key={user[0]} className={styles.card}>
+                    <div className={styles.cardContent}>
+                        <a href={`${whatsapp_link + cleanPhoneNumber(user[1].phone)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.cardName}>{capitalize(user[0])}</a>
+                        <p className={styles.cardDetail}>{user[1].position}</p>
+                        <p className={styles.cardDetail}><strong>Phone:</strong> {user[1].phone}</p>
+                        <p className={styles.cardDetail}><strong>Email:</strong> {user[1].email}</p>
+                    </div>
+                    <a href={`${whatsapp_link + cleanPhoneNumber(user[1].phone)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="float-right mt-9">
-                        <img src="../../icon/whatsapp.png" className="w-10 h-10 rounded-full object-cover" />
+                        className={styles.cardWhatsapp}>
+                        <img src="../../icon/whatsapp.png" className={styles.cardWhatsappImg} />
                     </a>
-                    <h2 className="text-lg font-semibold text-brand">{capitalize(user[0])}</h2>
-                    <p className={content_style}>{user[1].position}</p>
-                    <p className={content_style}><strong>Phone:</strong> {user[1].phone}</p>
-                    <p className={content_style}><strong>Email:</strong> {user[1].email}</p>
                 </div>
             ))}
         </div>
