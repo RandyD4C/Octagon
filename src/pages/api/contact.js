@@ -36,19 +36,42 @@ export default async function handler(req, res) {
     // RECAPTCHA VERIFICATION
     // ============================
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${captchaToken}&remoteip=${geoIp}`;
 
-    try {
-      const captchaRes = await fetch(verifyUrl, { method: 'POST' });
-      const captchaData = await captchaRes.json();
-
-      if (!captchaData.success) {
-        return res.status(400).json({ message: 'reCAPTCHA validation failed' });
+      if (!secretKey) {
+        console.error('RECAPTCHA_SECRET_KEY is not set');
+        return res.status(500).json({ message: 'Server misconfiguration' });
       }
-    } catch (error) {
-      console.error('reCAPTCHA verification error:', error);
-      return res.status(500).json({ message: 'Failed to verify reCAPTCHA' });
-    }
+
+      try {
+        const params = new URLSearchParams();
+        params.append('secret', secretKey);
+        params.append('response', captchaToken);
+        params.append('remoteip', geoIp);
+
+        const captchaRes = await fetch(
+          'https://www.google.com/recaptcha/api/siteverify',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: params.toString(),
+          }
+        );
+
+        const captchaData = await captchaRes.json();
+
+        if (!captchaData.success) {
+          return res.status(400).json({
+            message: 'reCAPTCHA validation failed',
+            errors: captchaData['error-codes'] || [],
+          });
+        }
+
+      } catch (error) {
+        console.error('reCAPTCHA verification error:', error);
+        return res.status(500).json({ message: 'Failed to verify reCAPTCHA' });
+      }
 
     // ============================
     // GEOLOCATION LOOKUP
