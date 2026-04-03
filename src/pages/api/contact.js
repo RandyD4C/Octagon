@@ -199,6 +199,8 @@ export default async function handler(req, res) {
             This is an automated notification from Octagon Precision Mold.
             `.trim(),
       html: htmlContent,
+      cc: process.env.CC_EMAIL || undefined,
+      bcc: process.env.BCC_EMAIL || undefined,
       attachments,
       replyTo: email
     });
