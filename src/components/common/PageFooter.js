@@ -12,7 +12,7 @@ const navLinks = [
 
 const services = [
     { label: "Precision Molds", href: "/catalogue" },
-    { label: "Booster Pumps", href: "/catalogue" },
+    { label: "Auto Degating", href: "/auto-degating-plastic-injection-mold" },
     { label: "Wire Harnesses", href: "/catalogue" },
     { label: "Automation", href: "/catalogue" },
 ]

@@ -14,6 +14,7 @@ const NAV_ITEMS = [
 ]
 
 const SOLUTIONS_ITEMS = [
+  { label: "Auto Degating Plastic Injection Mold", href: "/auto-degating-plastic-injection-mold" },
   { label: "Wire Harness", href: "/wire-harness" },
   { label: "Plastic Injection Spare Parts", href: "/plastic-injection-spare-parts" },
   { label: "Mold Components", href: "/mold-components" },

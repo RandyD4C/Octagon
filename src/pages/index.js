@@ -6,11 +6,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import {
     Settings2,
     Cable,
-    Nut,
     Bot,
     Hospital,
     Zap,
-    Gauge,
+    Gavel,
     Component,
     Calendar,
     Globe,
@@ -20,16 +19,9 @@ import {
     Globe2,
     CheckCircle2,
     Users,
-    Utensils,
-    Car,
-    Stethoscope,
-    Monitor,
-    Settings,
-    Plane,
     Mail,
     BookOpen,
-    ArrowRight,
-    TrendingUp
+    ArrowRight
 } from 'lucide-react'
 
 
@@ -132,11 +124,11 @@ export default function Home() {
     // --- STATIC DATA CONFIGURATIONS ---
     const products = [
         {
-            title: 'Booster Pumps',
-            description: 'High-efficiency air and gas-liquid booster systems',
-            icon: Gauge,
+            title: 'Auto Degating',
+            description: 'Automatic degating mold concepts for efficient plastic injection production',
+            icon: Gavel,
             color: '#2563EB',
-            link: '/contact'
+            link: '/auto-degating-plastic-injection-mold'
         },
         {
             title: 'Wire Harness',
@@ -286,7 +278,7 @@ export default function Home() {
                                 animation: activeHero === 0 ? 'slideUp 0.8s 0.35s ease-out both' : 'slideOutDown 0.8s 0.1s ease-in forwards'
                             }}
                         >
-                            Booster Pumps • Wire Harnesses • Mold Parts • Automation Systems
+                            Auto Degating | Wire Harnesses | Mold Parts | Automation Systems
                         </p>
 
                         <div className="flex gap-4 justify-center flex-wrap" style={{ animation: activeHero === 0 ? 'slideUp 0.8s 0.5s ease-out both' : 'slideOutDown 0.8s 0.2s ease-in forwards' }}>
@@ -370,7 +362,7 @@ export default function Home() {
                                         fontFamily: '"Archivo Black", sans-serif'
                                     }}
                                 >
-                                    VIEW CATALOGUE
+                                    LEARN MORE
                                     <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" strokeWidth={3} />
                                 </div>
                             </div>
@@ -448,7 +440,7 @@ export default function Home() {
                                         fontFamily: '"Archivo Black", sans-serif'
                                     }}
                                 >
-                                    VIEW CATALOGUE
+                                    LEARN MORE
                                     <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" strokeWidth={3} />
                                 </div>
                             </div>
@@ -525,7 +517,7 @@ export default function Home() {
                                         fontFamily: '"Archivo Black", sans-serif'
                                     }}
                                 >
-                                    VIEW CATALOGUE
+                                    LEARN MORE
                                     <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" strokeWidth={3} />
                                 </div>
                             </div>
@@ -580,7 +572,7 @@ export default function Home() {
                     {/* Right side: Image Container */}
                     <div className="relative w-full md:w-1/2 h-[45%] md:h-full mt-4 md:pt-0 flex items-center justify-center p-4 md:p-12 pb-20 md:pb-10 overflow-hidden">
                         <div
-                            onClick={() => router.push('/products/mold-parts')}
+                            onClick={() => router.push('/plastic-injection-spare-parts')}
                             className="group relative z-10 w-full h-full md:h-[80%] rounded-2xl md:rounded-l-3xl overflow-hidden shadow-2xl shadow-blue-900/20 bg-slate-800 border-2 border-blue-900/50 group-hover:border-blue-400 transition-all duration-500 cursor-pointer"
                             style={{
                                 animation: activeHero === 4 ? 'slideLeft 0.8s 0.6s ease-out both' : 'slideOutRight 0.8s ease-in both',
@@ -602,7 +594,7 @@ export default function Home() {
                                         fontFamily: '"Archivo Black", sans-serif'
                                     }}
                                 >
-                                    VIEW CATALOGUE
+                                    LEARN MORE
                                     <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" strokeWidth={3} />
                                 </div>
                             </div>
@@ -679,7 +671,7 @@ export default function Home() {
                                         fontFamily: '"Archivo Black", sans-serif'
                                     }}
                                 >
-                                    VIEW CATALOGUE
+                                    LEARN MORE
                                     <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" strokeWidth={3} />
                                 </div>
                             </div>
@@ -727,7 +719,7 @@ export default function Home() {
                         </h2>
                         <p data-aos="fade-up" data-aos-delay="150" className="text-md text-gray-600 leading-relaxed" style={{ fontFamily: '"Poppins", sans-serif' }}>
                             Octagon Precision Mold (M) SDN.BHD. is focused on precision manufacturing, headquartered in Malaysia,
-                            with production facilities in Malaysia. We specialize in booster pumps, custom wire harnesses,
+                            with production facilities in Malaysia. We specialize in auto degating solutions, custom wire harnesses,
                             mold parts, and in-mold cutting equipment, providing efficient and reliable manufacturing solutions
                             for global customers.
                         </p>
@@ -1133,7 +1125,7 @@ export default function Home() {
                                     className="px-8 py-4 bg-transparent border-2 border-white text-white font-black text-lg rounded-full hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 flex items-center gap-3"
                                     style={{ fontFamily: '"Archivo Black", sans-serif' }}
                                 >
-                                    VIEW CATALOGUE <BookOpen size={20} strokeWidth={2.5} />
+                                    LEARN MORE <BookOpen size={20} strokeWidth={2.5} />
                                 </button>
                             </div>
                         </div>
