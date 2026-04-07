@@ -1,6 +1,14 @@
 [
   {
     "id": "1",
+    "name": "Wire Harness",
+    "category": "Wire Harness",
+    "description": "Wire Harness for Industrial Applications.",
+    "file": "../catalogues/wire-harness.pdf",
+    "preview": "../catalogue-preview/wire-harness.png"
+  },
+  {
+    "id": "2",
     "name": "Insert Nuts",
     "category": "Nuts",
     "description": "Threaded Inserts for Plastic Parts.",
@@ -8,7 +16,7 @@
     "preview": "../catalogue-preview/insert-nuts.png"
   },
   {
-    "id": "2",
+    "id": "3",
     "name": "Sheet Metal Fasteners",
     "category": "Fasteners",
     "description": "Fasteners for Sheet Metal Applications.",
@@ -16,7 +24,7 @@
     "preview": "../catalogue-preview/fasteners.png"
   },
   {
-    "id": "3",
+    "id": "4",
     "name": "Helicoil and Keensert",
     "category": "Inserts",
     "description": "Wire Thread Inserts, Keylocking Threaded Inserts, and Solid Threaded Inserts for Metal.",
@@ -24,7 +32,7 @@
     "preview": "../catalogue-preview/helicoil-keensert.png"
   },
   {
-    "id": "4",
+    "id": "5",
     "name": "Standoffs",
     "category": "Inserts",
     "description": "Standoffs series for PCB and other applications.",

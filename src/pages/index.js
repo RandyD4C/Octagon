@@ -136,42 +136,42 @@ export default function Home() {
             description: 'High-efficiency air and gas-liquid booster systems',
             icon: Gauge,
             color: '#2563EB',
-            link: '/catalogue'
+            link: '/contact'
         },
         {
             title: 'Wire Harness',
             description: 'Custom-engineered wiring for automotive, medical & industrial',
             icon: Cable,
             color: '#7C3AED',
-            link: '/catalogue'
+            link: '/wire-harness'
         },
         {
             title: 'Mold Parts',
             description: 'Precision die casting, stamping & plastic mold components',
             icon: Component,
             color: '#DC2626',
-            link: '/catalogue'
+            link: '/mold-components'
         },
         {
             title: 'Automation Systems',
             description: 'In-mold cutting and automation solutions',
             icon: Bot,
             color: '#059669',
-            link: '/catalogue'
+            link: '/mold-components'
         },
         {
             title: 'Medical Harnesses',
             description: 'Certified medical-grade wiring assemblies',
             icon: Hospital,
             color: '#EA580C',
-            link: '/catalogue'
+            link: '/wire-harness'
         },
         {
             title: 'Custom Solutions',
             description: 'OEM & ODM non-standard parts manufacturing',
             icon: Zap,
             color: '#0891B2',
-            link: '/catalogue'
+            link: '/contact'
         }
     ]
 
@@ -291,7 +291,7 @@ export default function Home() {
 
                         <div className="flex gap-4 justify-center flex-wrap" style={{ animation: activeHero === 0 ? 'slideUp 0.8s 0.5s ease-out both' : 'slideOutDown 0.8s 0.2s ease-in forwards' }}>
                             <button
-                                onClick={() => router.push('/catalogue')}
+                                onClick={() => router.push('/contact')}
                                 className="px-8 py-4 bg-blue-600 text-white font-black text-base rounded-full hover:bg-blue-500 transition-all duration-300 transform hover:scale-105 shadow-2xl whitespace-nowrap"
                                 style={{ fontFamily: '"Archivo Black", sans-serif' }}
                             >
@@ -347,7 +347,7 @@ export default function Home() {
                     <div className="relative w-full md:w-1/2 h-[45%] md:h-full mt-4 md:pt-0 flex items-center justify-center p-4 md:p-12 pb-20 md:pb-10 overflow-hidden">
                         {/* The Image Overlay/Container - Now the actual interactive box */}
                         <div
-                            onClick={() => router.push('/catalogue')}
+                            onClick={() => router.push('/mold-components')}
                             className="group relative z-10 w-full h-full md:h-[80%] rounded-2xl md:rounded-l-3xl overflow-hidden shadow-2xl shadow-blue-900/20 bg-slate-800 border-2 border-blue-900/50 group-hover:border-blue-400 transition-all duration-500 cursor-pointer"
                             style={{
                                 animation: activeHero === 1 ? 'slideLeft 0.8s 0.6s ease-out both' : 'slideOutRight 0.8s ease-in both',
@@ -426,7 +426,7 @@ export default function Home() {
                     {/* Right side: Image Container */}
                     <div className="relative w-full md:w-1/2 h-[45%] md:h-full mt-4 md:pt-0 flex items-center justify-center p-4 md:p-12 pb-20 md:pb-10 overflow-hidden">
                         <div
-                            onClick={() => router.push('/products/mold-parts')}
+                            onClick={() => router.push('/mold-components')}
                             className="group relative z-10 w-full h-full md:h-[80%] rounded-2xl md:rounded-l-3xl overflow-hidden shadow-2xl shadow-blue-900/20 bg-slate-800 border-2 border-blue-900/50 group-hover:border-blue-400 transition-all duration-500 cursor-pointer"
                             style={{
                                 animation: activeHero === 2 ? 'slideLeft 0.8s 0.6s ease-out both' : 'slideOutRight 0.8s ease-in both',
@@ -503,7 +503,7 @@ export default function Home() {
                     {/* Right side: Image Container */}
                     <div className="relative w-full md:w-1/2 h-[45%] md:h-full mt-4 md:pt-0 flex items-center justify-center p-4 md:p-12 pb-20 md:pb-10 overflow-hidden">
                         <div
-                            onClick={() => router.push('/products/mold-parts')}
+                            onClick={() => router.push('/plastic-injection-spare-parts')}
                             className="group relative z-10 w-full h-full md:h-[80%] rounded-2xl md:rounded-l-3xl overflow-hidden shadow-2xl shadow-blue-900/20 bg-slate-800 border-2 border-blue-900/50 group-hover:border-blue-400 transition-all duration-500 cursor-pointer"
                             style={{
                                 animation: activeHero === 3 ? 'slideLeft 0.8s 0.6s ease-out both' : 'slideOutRight 0.8s ease-in both',
@@ -657,7 +657,7 @@ export default function Home() {
                     {/* Right side: Image Container */}
                     <div className="relative w-full md:w-1/2 h-[45%] md:h-full mt-4 md:pt-0 flex items-center justify-center p-4 md:p-12 pb-20 md:pb-10 overflow-hidden">
                         <div
-                            onClick={() => router.push('/products/wire-harness')}
+                            onClick={() => router.push('/wire-harness')}
                             className="group relative z-10 w-full h-full md:h-[80%] rounded-2xl md:rounded-l-3xl overflow-hidden shadow-2xl shadow-blue-900/20 bg-slate-800 border-2 border-blue-900/50 group-hover:border-blue-400 transition-all duration-500 cursor-pointer"
                             style={{
                                 animation: activeHero === 5 ? 'slideLeft 0.8s 0.6s ease-out both' : 'slideOutRight 0.8s ease-in both',
@@ -916,7 +916,7 @@ export default function Home() {
                         {industries.map((industry, index) => (
                             <div
                                 key={index}
-                                onClick={() => router.push('/catalogue')}
+                                    onClick={() => router.push('/mold-components')}
                                 className="group relative aspect-[4/3] w-full mx-auto rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-500 transform hover:scale-[1.02] border-2 border-blue-300 hover:border-blue-600"
                                 data-aos="zoom-in"
                                 data-aos-delay={index * 50}
@@ -1129,7 +1129,7 @@ export default function Home() {
                                     CONTACT US <Mail size={20} strokeWidth={2.5} />
                                 </button>
                                 <button
-                                    onClick={() => router.push('/catalogue')}
+                                    onClick={() => router.push('/wire-harness')}
                                     className="px-8 py-4 bg-transparent border-2 border-white text-white font-black text-lg rounded-full hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 flex items-center gap-3"
                                     style={{ fontFamily: '"Archivo Black", sans-serif' }}
                                 >
