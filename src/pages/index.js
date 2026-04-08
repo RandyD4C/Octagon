@@ -1,4 +1,5 @@
 // --- IMPORTS & CORE DEPENDENCIES ---
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useState, useEffect, useRef } from 'react'
 import siteConfig from '../config/siteConfig'
@@ -222,6 +223,13 @@ export default function Home() {
     return (
         // --- MAIN LAYOUT RENDER ---
         <div className="min-h-screen bg-white overflow-hidden">
+            <Head>
+                <title>Octagon Precision Mold | Precision Mold Components, Auto Degating & Wire Harness Solutions</title>
+                <meta
+                    name="description"
+                    content="Octagon Precision Mold provides precision mold components, auto degating mold solutions, plastic injection spare parts, and wire harness support for Malaysia and global B2B customers."
+                />
+            </Head>
             {/* Hero Section Carousel */}
             {/* SECTION 1: HERO CAROUSEL */}
             <section

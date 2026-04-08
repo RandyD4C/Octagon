@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { useState, useEffect } from "react"
 import siteConfig from "../config/siteConfig"
 import PageHeader from "../components/common/PageHeader"
@@ -22,6 +23,13 @@ export default function Catalogue() {
 
   return (
     <div className="w-full">
+      <Head>
+        <title>Catalogue | Octagon Precision Mold</title>
+        <meta
+          name="description"
+          content="Browse the Octagon Precision Mold catalogue for precision mold parts, fastening products, and industrial manufacturing references."
+        />
+      </Head>
       <PageHeader title="Catalogue" />
       <div className="p-6 max-w-4xl mx-auto">
         <SearchBar value={query} onChange={setQuery} />

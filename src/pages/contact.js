@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { useState, useEffect, useRef } from "react"
 import siteConfig from "../config/siteConfig"
 import PageHeader from "../components/common/PageHeader"
@@ -207,6 +208,13 @@ export default function Contact() {
     // ==========================================
     return (
         <div className="w-full">
+            <Head>
+                <title>Contact Octagon Precision Mold | Enquiry & RFQ Support</title>
+                <meta
+                    name="description"
+                    content="Contact Octagon Precision Mold for mould components, auto degating solutions, plastic injection spare parts, wire harness enquiries, and RFQ discussions."
+                />
+            </Head>
             <PageHeader title="Contact Us" />
             <div className={styles.contactPage}>
                 <div className={`${styles.animateIn} ${styles.delay1}`}>

@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { useState, useEffect, useRef } from "react"
 import siteConfig from "../config/siteConfig"
 import PageHeader from "../components/common/PageHeader"
@@ -133,6 +134,13 @@ export default function About() {
     return (
         <Animate>
             <div className="w-full flex flex-col justify-center items-center flex-1">
+                <Head>
+                    <title>About Octagon Precision Mold | Precision Manufacturing Company in Malaysia</title>
+                    <meta
+                        name="description"
+                        content="Learn more about Octagon Precision Mold, a Malaysia-based precision manufacturing company supporting global customers with mold-related equipment, custom parts, and industrial solutions."
+                    />
+                </Head>
                 <PageHeader title="About Us" />
                 <div className="relative flex h-[400px] md:h-[500px] lg:h-[650px] w-full overflow-hidden">
                     {/* Background Image Layer */}
