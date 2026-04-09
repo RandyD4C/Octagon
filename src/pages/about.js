@@ -139,6 +139,7 @@ export default function About() {
                     <meta
                         name="description"
                         content="Learn more about Octagon Precision Mold, a Malaysia-based precision manufacturing company supporting global customers with mold-related equipment, custom parts, and industrial solutions."
+                        key="description"
                     />
                 </Head>
                 <PageHeader title="About Us" />

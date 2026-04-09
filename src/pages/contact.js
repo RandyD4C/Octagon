@@ -213,6 +213,7 @@ export default function Contact() {
                 <meta
                     name="description"
                     content="Contact Octagon Precision Mold for mould components, auto degating solutions, plastic injection spare parts, wire harness enquiries, and RFQ discussions."
+                    key="description"
                 />
             </Head>
             <PageHeader title="Contact Us" />

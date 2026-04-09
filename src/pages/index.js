@@ -228,6 +228,7 @@ export default function Home() {
                 <meta
                     name="description"
                     content="Octagon Precision Mold provides precision mold components, auto degating mold solutions, plastic injection spare parts, and wire harness support for Malaysia and global B2B customers."
+                    key="description"
                 />
             </Head>
             {/* Hero Section Carousel */}

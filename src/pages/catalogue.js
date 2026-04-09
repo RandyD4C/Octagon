@@ -28,6 +28,7 @@ export default function Catalogue() {
         <meta
           name="description"
           content="Browse the Octagon Precision Mold catalogue for precision mold parts, fastening products, and industrial manufacturing references."
+          key="description"
         />
       </Head>
       <PageHeader title="Catalogue" />

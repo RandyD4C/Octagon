@@ -45,7 +45,7 @@ export default function SeoLandingPage({
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content={description} />
+        <meta name="description" content={description} key="description" />
         <link rel="canonical" href={canonicalUrl} />
       </Head>
 
