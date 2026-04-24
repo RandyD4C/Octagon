@@ -11,18 +11,20 @@ const SITE_CONFIG = {
       "Equipped with advanced precision machining and inspection systems, we achieve tolerances up to ±0.002 mm and mirror surface finishes of Ra0.05-Ra0.2. We are committed to delivering high-quality, cost-effective products with reliable lead times — ensuring customer satisfaction through precision and professionalism."
     ]
   },
-  contacts: {
-    james: {
+  contacts: [
+    {
       email: "james.koay@octagon-mold.com",
       phone: "+60 16-420 5848",
       position: "Sales Manager",
+      name: "James Koay",
     },
-    randy: {
+    {
       email: "sales@octagon-mold.com",
       phone: "+60 17-415 2563",
       position: "Sales Engineer",
+      name: "Randy Chong",
     }
-  },
+  ],
   brand_color: "#154A9A",
   site_url: "https://octagon-catalogue.vercel.app", // update after deploy
   is_dev,

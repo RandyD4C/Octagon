@@ -1,4 +1,4 @@
-import { capitalize, cleanPhoneNumber } from "../../utils/formatters"
+import { cleanPhoneNumber } from "../../utils/formatters"
 import styles from "../../styles/contact.module.css"
 
 export default function ContactList({ contacts }) {
@@ -6,18 +6,18 @@ export default function ContactList({ contacts }) {
 
     return (
         <div className={styles.list}>
-            {Object.entries(contacts).map((user) => (
-                <div key={user[0]} className={styles.card}>
+            {contacts.map((user) => (
+                <div key={user.name} className={styles.card}>
                     <div className={styles.cardContent}>
-                        <a href={`${whatsapp_link + cleanPhoneNumber(user[1].phone)}`}
+                        <a href={`${whatsapp_link + cleanPhoneNumber(user.phone)}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={styles.cardName}>{capitalize(user[0])}</a>
-                        <p className={styles.cardDetail}>{user[1].position}</p>
-                        <p className={styles.cardDetail}><strong>Phone:</strong> {user[1].phone}</p>
-                        <p className={styles.cardDetail}><strong>Email:</strong> {user[1].email}</p>
+                            className={styles.cardName}>{user.name}</a>
+                        <p className={styles.cardDetail}>{user.position}</p>
+                        <p className={styles.cardDetail}><strong>Phone:</strong> {user.phone}</p>
+                        <p className={styles.cardDetail}><strong>Email:</strong> {user.email}</p>
                     </div>
-                    <a href={`${whatsapp_link + cleanPhoneNumber(user[1].phone)}`}
+                    <a href={`${whatsapp_link + cleanPhoneNumber(user.phone)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.cardWhatsapp}>
