@@ -1,8 +1,55 @@
 import Head from "next/head"
 import Link from "next/link"
+import { useState } from "react"
 import siteConfig from "../config/siteConfig"
 
+const autoDegatingExamples = [
+  {
+    src: "/solutions/auto-degating-example-1.jpg",
+    alt: "Before and after auto degating example for rectangular plastic component",
+    title: "Example 1: Rectangular cover component",
+    description:
+      "This comparison highlights how the auto-degating solution removes the need for a large visible gate remnant and leaves a cleaner molded surface."
+  },
+  {
+    src: "/solutions/auto-degating-example-2.jpg",
+    alt: "Before and after auto degating example for bracket plastic part",
+    title: "Example 2: Bracket-style molded part",
+    description:
+      "The part geometry shows how a self-degating approach can separate the molded component from the runner more cleanly during the molding cycle."
+  },
+  {
+    src: "/solutions/auto-degating-example-3.jpg",
+    alt: "Before and after auto degating example for long plastic trim part",
+    title: "Example 3: Long trim component",
+    description:
+      "For larger linear parts, auto degating helps reduce secondary trimming work and supports more consistent output across repeated cycles."
+  },
+  {
+    src: "/solutions/auto-degating-example-4.jpg",
+    alt: "Before and after auto degating example for frame plastic part",
+    title: "Example 4: Frame-shaped component",
+    description:
+      "This example demonstrates how the gate and runner layout can be managed so the finished frame is separated more efficiently during mold opening or ejection."
+  },
+  {
+    src: "/solutions/auto-degating-example-5.jpg",
+    alt: "Before and after auto degating example for hinged plastic housing part",
+    title: "Example 5: Hinged housing panel",
+    description:
+      "For cosmetic exterior parts, an automatic degating mold concept can reduce manual finishing effort while helping maintain repeatable gate break quality."
+  },
+  {
+    src: "/solutions/auto-degating-example-6.jpg",
+    alt: "Before and after auto degating example for rounded plastic cover part",
+    title: "Example 6: Rounded cover component",
+    description:
+      "This sample shows how auto degating can improve presentation on visible surfaces by controlling where the gate is separated from the final molded part."
+  }
+]
+
 export default function AutoDegatingPlasticInjectionMoldPage() {
+  const [activeImage, setActiveImage] = useState(null)
   const companyName = siteConfig?.company_name || "Octagon Precision Mold"
   const canonicalUrl = siteConfig?.site_url
     ? `${siteConfig.site_url}/auto-degating-plastic-injection-mold`
@@ -199,6 +246,40 @@ export default function AutoDegatingPlasticInjectionMoldPage() {
 
           <section>
             <h2 className="text-2xl font-semibold mt-8 mb-2 text-slate-900">
+              Before and After Auto-Degating Examples
+            </h2>
+            <p className="text-base leading-7 text-slate-700">
+              The following examples show molded products before and after applying an auto-degating solution. These comparisons help illustrate how automatic gate separation can reduce visible gate remnants, minimize manual finishing, and support a more consistent production result.
+            </p>
+            <div className="mt-6 grid gap-6 md:grid-cols-2">
+              {autoDegatingExamples.map((example) => (
+                <figure
+                  key={example.src}
+                  className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setActiveImage(example)}
+                    className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden bg-slate-100 transition hover:bg-slate-200"
+                    aria-label={`View full image for ${example.title}`}
+                  >
+                    <img
+                      src={example.src}
+                      alt={example.alt}
+                      className="h-full w-full object-contain"
+                    />
+                  </button>
+                  <figcaption className="space-y-2 p-5">
+                    <h3 className="text-lg font-semibold text-slate-900">{example.title}</h3>
+                    <p className="text-sm leading-6 text-slate-700">{example.description}</p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mt-8 mb-2 text-slate-900">
               Applications &amp; Industries
             </h2>
             <ul className="list-disc space-y-3 pl-6 text-slate-700">
@@ -312,6 +393,41 @@ export default function AutoDegatingPlasticInjectionMoldPage() {
             </Link>
           </section>
         </article>
+
+        {activeImage && (
+          <div
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4"
+            onClick={() => setActiveImage(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={activeImage.title}
+          >
+            <div
+              className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-2xl"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setActiveImage(null)}
+                className="absolute right-4 top-4 z-10 rounded-full bg-black/70 px-3 py-1 text-sm font-semibold text-white transition hover:bg-black"
+                aria-label="Close full image view"
+              >
+                Close
+              </button>
+              <div className="flex max-h-[75vh] items-center justify-center bg-slate-100 p-4">
+                <img
+                  src={activeImage.src}
+                  alt={activeImage.alt}
+                  className="max-h-[70vh] w-full object-contain"
+                />
+              </div>
+              <div className="space-y-2 p-5">
+                <h3 className="text-lg font-semibold text-slate-900">{activeImage.title}</h3>
+                <p className="text-sm leading-6 text-slate-700">{activeImage.description}</p>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </>
   )
