@@ -250,7 +250,7 @@ export default function Home() {
                     <div
                         className="absolute inset-0 bg-cover bg-center"
                         style={{
-                            backgroundImage: "url('/home/Vision.png')",
+                            backgroundImage: "url('/home/core-products.png')",
                             animation: activeHero === 0 ? 'bgZoomFade 1.5s ease-out forwards' : 'none'
                         }}
                     />
@@ -292,7 +292,7 @@ export default function Home() {
 
                         <div className="flex gap-4 justify-center flex-wrap" style={{ animation: activeHero === 0 ? 'slideUp 0.8s 0.5s ease-out both' : 'slideOutDown 0.8s 0.2s ease-in forwards' }}>
                             <button
-                                onClick={() => router.push('/contact')}
+                                onClick={() => router.push('/catalogue')}
                                 className="px-8 py-4 bg-blue-600 text-white font-black text-base rounded-full hover:bg-blue-500 transition-all duration-300 transform hover:scale-105 shadow-2xl whitespace-nowrap"
                                 style={{ fontFamily: '"Archivo Black", sans-serif' }}
                             >
