@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /backend/
+
+# Host
+Host: https://octagon-mold.com.my
+
+# Sitemaps
+Sitemap: https://octagon-mold.com.my/sitemap.xml
