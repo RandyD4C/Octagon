@@ -1,8 +1,27 @@
 import Head from "next/head"
-import Script from "next/script"
+import { useEffect } from "react"
 import PageHeader from "../components/common/PageHeader"
 
+const SORO_BLOG_SCRIPT = "https://app.trysoro.com/api/embed/5cd62c4f-27ae-4d15-9a88-dff8eba80ec9"
+
 export default function Blog() {
+  useEffect(() => {
+    const blogContainer = document.getElementById("soro-blog")
+    if (blogContainer) {
+      blogContainer.innerHTML = ""
+    }
+
+    const script = document.createElement("script")
+    script.src = SORO_BLOG_SCRIPT
+    script.defer = true
+    script.dataset.soroBlogEmbed = "true"
+    document.body.appendChild(script)
+
+    return () => {
+      script.remove()
+    }
+  }, [])
+
   return (
     <div className="w-full">
       <Head>
@@ -17,10 +36,6 @@ export default function Blog() {
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-6">
         <div id="soro-blog"></div>
       </div>
-      <Script
-        src="https://app.trysoro.com/api/embed/5cd62c4f-27ae-4d15-9a88-dff8eba80ec9"
-        strategy="afterInteractive"
-      />
     </div>
   )
 }
