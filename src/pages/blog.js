@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import PageHeader from "../components/common/PageHeader"
 
 const SORO_BLOG_SCRIPT = "https://app.trysoro.com/api/embed/5cd62c4f-27ae-4d15-9a88-dff8eba80ec9"
+const SORO_CACHE_WINDOW_MS = 5 * 60 * 1000
 
 export default function Blog() {
   useEffect(() => {
@@ -12,7 +13,8 @@ export default function Blog() {
     }
 
     const script = document.createElement("script")
-    script.src = SORO_BLOG_SCRIPT
+    const cacheKey = Math.floor(Date.now() / SORO_CACHE_WINDOW_MS)
+    script.src = `${SORO_BLOG_SCRIPT}?v=${cacheKey}`
     script.defer = true
     script.dataset.soroBlogEmbed = "true"
     document.body.appendChild(script)
