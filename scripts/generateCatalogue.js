@@ -24,7 +24,7 @@ const generateCatalogue = (count = 10) => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       category,
       file: "/catalogues/insert-nuts.pdf",
-      preview: "/catalogue-preview/insert-nuts.png"
+      preview: "/catalogue-preview/insert-nuts.webp"
     };
   });
 };

@@ -89,11 +89,11 @@ export default function Home() {
 
     const heroSlides = [
         { type: 'text' },
-        { type: 'image', image: '/home/sheet-metal-fasteners.png' },
-        { type: 'image', image: '/home/Standoff.png' },
-        { type: 'image', image: '/home/Insert_nuts.png' },
-        { type: 'image', image: '/home/threaded insert.png' },
-        { type: 'image', image: '/home/Wires.png' }
+        { type: 'image', image: '/home/sheet-metal-fasteners.webp' },
+        { type: 'image', image: '/home/Standoff.webp' },
+        { type: 'image', image: '/home/Insert_nuts.webp' },
+        { type: 'image', image: '/home/threaded insert.webp' },
+        { type: 'image', image: '/home/Wires.webp' }
     ]
 
 
@@ -204,20 +204,20 @@ export default function Home() {
     ]
 
     const industries = [
-        { name: 'Medical', image: '/home/medical.png' },
-        { name: 'Electronics', image: '/home/electronic.png' },
-        { name: 'Mechanical', image: '/home/mechanical.png' },
-        { name: 'Aerospace', image: '/home/aerospace.png' }
+        { name: 'Medical', image: '/home/medical.webp' },
+        { name: 'Electronics', image: '/home/electronic.webp' },
+        { name: 'Mechanical', image: '/home/mechanical.webp' },
+        { name: 'Aerospace', image: '/home/aerospace.webp' }
     ]
 
     const certificates = [
-        '/certificates/honorary-certificate-1.png',
-        '/certificates/honorary-certificate-2.png',
-        '/certificates/honorary-certificate-3.png',
-        '/certificates/honorary-certificate-4.png',
-        '/certificates/honorary-certificate-5.png',
-        '/certificates/honorary-certificate-6.png',
-        '/certificates/honorary-certificate-8.png',
+        '/certificates/honorary-certificate-1.webp',
+        '/certificates/honorary-certificate-2.webp',
+        '/certificates/honorary-certificate-3.webp',
+        '/certificates/honorary-certificate-4.webp',
+        '/certificates/honorary-certificate-5.webp',
+        '/certificates/honorary-certificate-6.webp',
+        '/certificates/honorary-certificate-8.webp',
     ]
 
     return (
@@ -250,7 +250,7 @@ export default function Home() {
                     <div
                         className="absolute inset-0 bg-cover bg-center"
                         style={{
-                            backgroundImage: "url('/home/core-products.png')",
+                            backgroundImage: "url('/home/core-products.webp')",
                             animation: activeHero === 0 ? 'bgZoomFade 1.5s ease-out forwards' : 'none'
                         }}
                     />
@@ -358,7 +358,7 @@ export default function Home() {
                             <div
                                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110"
                                 style={{
-                                    backgroundImage: "url('/home/sheet-metal-fasteners.png')",
+                                    backgroundImage: "url('/home/sheet-metal-fasteners.webp')",
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
                                 }}
@@ -436,7 +436,7 @@ export default function Home() {
                         >
                             <div
                                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110" style={{
-                                    backgroundImage: "url('/home/Standoff.png')",
+                                    backgroundImage: "url('/home/Standoff.webp')",
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
                                 }}
@@ -513,7 +513,7 @@ export default function Home() {
                         >
                             <div
                                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110" style={{
-                                    backgroundImage: "url('/home/Insert_nuts.png')",
+                                    backgroundImage: "url('/home/Insert_nuts.webp')",
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
                                 }}
@@ -590,7 +590,7 @@ export default function Home() {
                         >
                             <div
                                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110" style={{
-                                    backgroundImage: "url('/home/threaded insert.png')",
+                                    backgroundImage: "url('/home/threaded insert.webp')",
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
                                 }}
@@ -667,7 +667,7 @@ export default function Home() {
                         >
                             <div
                                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110" style={{
-                                    backgroundImage: "url('/home/Wires.png')",
+                                    backgroundImage: "url('/home/Wires.webp')",
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
                                 }}

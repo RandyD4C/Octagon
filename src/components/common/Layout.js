@@ -37,7 +37,7 @@ export default function Layout({ children }) {
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
           <Link href="/">
             <img
-              src="/company-logo.png"
+              src="/company-logo.webp"
               alt="Octagon Precision Mold"
               className="h-10 sm:h-12 md:h-14 w-auto object-contain cursor-pointer hover:opacity-80 transition-opacity"
             />

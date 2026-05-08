@@ -8,19 +8,19 @@ import { ChevronLeft, ChevronRight, MapPin } from "lucide-react"
 
 
 const CLIENT_LOGOS = [
-    "/about/knights-engineering-logo.png",
+    "/about/knights-engineering-logo.webp",
     "/about/q-plas-logo.webp",
-    "/about/class-A-logo.png",
-    "/about/exceptional-mould-logo.png",
-    "/about/hp-logo.png",
-    "/about/meHow-logo.png",
-    "/about/Nationgate-logo.png",
-    "/about/Modernria-logo.png",
-    "/about/Meiban-logo.png",
-    "/about/IMR-logo.png",
-    "/about/Junyu.png",
-    "/about/PDI.png",
-    "/about/silitech logo.png"
+    "/about/class-A-logo.webp",
+    "/about/exceptional-mould-logo.webp",
+    "/about/hp-logo.webp",
+    "/about/meHow-logo.webp",
+    "/about/Nationgate-logo.webp",
+    "/about/Modernria-logo.webp",
+    "/about/Meiban-logo.webp",
+    "/about/IMR-logo.webp",
+    "/about/Junyu.webp",
+    "/about/PDI.webp",
+    "/about/silitech logo.webp"
 ];
 
 const Counter = ({ target, duration = 2000, suffix = "" }) => {
@@ -145,7 +145,7 @@ export default function About() {
                 <PageHeader title="About Us" />
                 <div className="relative flex h-[400px] md:h-[500px] lg:h-[650px] w-full overflow-hidden">
                     {/* Background Image Layer */}
-                    <div className="absolute inset-0 bg-[url('/about/about-us.jpg')] bg-cover bg-center">
+                    <div className="absolute inset-0 bg-[url('/about/about-us.webp')] bg-cover bg-center">
                         <div className="absolute inset-0 bg-black/60"></div>
                         <div className="absolute inset-0 bg-gradient-to-b from-[#154A9A]/40 to-transparent"></div>
                     </div>
@@ -200,7 +200,7 @@ export default function About() {
                             <div className="w-20 h-1 bg-gradient-to-r from-[#154A9A] to-blue-400 rounded-full mb-10 opacity-40 group-hover:opacity-100 transition-opacity"></div>
 
                             <div className="mb-10 p-10 bg-gradient-to-tr from-slate-50 to-white rounded-2xl shadow-inner border border-slate-100 transition-transform duration-700">
-                                <img src="/about/logo.png" alt="Logo"
+                                <img src="/about/logo.webp" alt="Logo"
                                     className="w-auto h-[clamp(80px,8vw,120px)] object-contain drop-shadow-sm" />
                             </div>
 
@@ -278,7 +278,7 @@ export default function About() {
                 <div className="flex flex-col items-center w-full py-8 overflow-x-hidden">
                     <div ref={mapRef} className="relative max-w-[320px] md:max-w-[500px] lg:max-w-[600px] w-full px-4 overflow-visible rounded-xl shadow-lg bg-white">
                         <svg viewBox="0 0 800 1000" className="w-full h-auto">
-                            <image href="/about/image.png" x="0" y="0" width="800" height="1000" />
+                            <image href="/about/image.webp" x="0" y="0" width="800" height="1000" />
 
                             {/* Glowing Definition */}
                             <defs>

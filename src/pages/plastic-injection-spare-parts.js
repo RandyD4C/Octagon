@@ -9,7 +9,7 @@ export default function PlasticInjectionSparePartsPage() {
       keyword="Plastic Injection Spare Parts Supplier"
       catalogueLinkLabel="View our spare parts catalogue"
       intro="This page is for maintenance engineers, tooling teams, and procurement managers who need a dependable plastic injection spare parts supplier. Octagon Precision Mold supports replacement components and spare part planning for injection molding operations that prioritize uptime and dimensional consistency."
-      image="/solutions/spare-parts.png"
+      image="/solutions/spare-parts.webp"
       imageAlt="Plastic Injection Spare Parts"
       overview={[
         "Plastic injection spare parts are essential for maintaining stable production, minimizing downtime, and keeping molds and machines running within expected process windows. Buyers typically need dependable supply, matching dimensions, and practical lead-time planning rather than generic off-the-shelf substitution.",

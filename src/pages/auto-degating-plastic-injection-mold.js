@@ -5,42 +5,42 @@ import siteConfig from "../config/siteConfig"
 
 const autoDegatingExamples = [
   {
-    src: "/solutions/auto-degating-example-1.jpg",
+    src: "/solutions/auto-degating-example-1.webp",
     alt: "Before and after auto degating example for rectangular plastic component",
     title: "Example 1: Rectangular cover component",
     description:
       "This comparison highlights how the auto-degating solution removes the need for a large visible gate remnant and leaves a cleaner molded surface."
   },
   {
-    src: "/solutions/auto-degating-example-2.jpg",
+    src: "/solutions/auto-degating-example-2.webp",
     alt: "Before and after auto degating example for bracket plastic part",
     title: "Example 2: Bracket-style molded part",
     description:
       "The part geometry shows how a self-degating approach can separate the molded component from the runner more cleanly during the molding cycle."
   },
   {
-    src: "/solutions/auto-degating-example-3.jpg",
+    src: "/solutions/auto-degating-example-3.webp",
     alt: "Before and after auto degating example for long plastic trim part",
     title: "Example 3: Long trim component",
     description:
       "For larger linear parts, auto degating helps reduce secondary trimming work and supports more consistent output across repeated cycles."
   },
   {
-    src: "/solutions/auto-degating-example-4.jpg",
+    src: "/solutions/auto-degating-example-4.webp",
     alt: "Before and after auto degating example for frame plastic part",
     title: "Example 4: Frame-shaped component",
     description:
       "This example demonstrates how the gate and runner layout can be managed so the finished frame is separated more efficiently during mold opening or ejection."
   },
   {
-    src: "/solutions/auto-degating-example-5.jpg",
+    src: "/solutions/auto-degating-example-5.webp",
     alt: "Before and after auto degating example for hinged plastic housing part",
     title: "Example 5: Hinged housing panel",
     description:
       "For cosmetic exterior parts, an automatic degating mold concept can reduce manual finishing effort while helping maintain repeatable gate break quality."
   },
   {
-    src: "/solutions/auto-degating-example-6.jpg",
+    src: "/solutions/auto-degating-example-6.webp",
     alt: "Before and after auto degating example for rounded plastic cover part",
     title: "Example 6: Rounded cover component",
     description:
@@ -100,7 +100,7 @@ export default function AutoDegatingPlasticInjectionMoldPage() {
 
           <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
             <img
-              src="/solutions/auto-degating-mold.png"
+              src="/solutions/auto-degating-mold.webp"
               alt="Auto Degating Plastic Injection Mold"
               className="h-auto w-full object-cover"
             />

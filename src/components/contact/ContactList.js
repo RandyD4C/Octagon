@@ -21,7 +21,7 @@ export default function ContactList({ contacts }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.cardWhatsapp}>
-                        <img src="../../icon/whatsapp.png" className={styles.cardWhatsappImg} />
+                        <img src="../../icon/whatsapp.webp" className={styles.cardWhatsappImg} />
                     </a>
                 </div>
             ))}

@@ -9,7 +9,7 @@ export default function MoldComponentsPage() {
       keyword="Mold Components Manufacturer"
       catalogueLinkLabel="View our mold components catalogue"
       intro="This page is for tooling engineers, production managers, and procurement teams sourcing a mold components manufacturer for precision parts and non-standard requirements. Octagon Precision Mold supports mold-related manufacturing with practical attention to fit, tolerance, and production reliability."
-      image="/solutions/mold-components.png"
+      image="/solutions/mold-components.webp"
       imageAlt="Precision Mold Components"
       overview={[
         "A mold components manufacturer is often evaluated on more than machining capability alone. Industrial buyers need consistency across batches, practical understanding of mold function, and the ability to support both replacement and new-build requirements.",
