@@ -26,7 +26,7 @@ const SITE_CONFIG = {
     }
   ],
   brand_color: "#154A9A",
-  site_url: "https://octagon-catalogue.vercel.app", // update after deploy
+  site_url: "https://octagon-mold.com.my",
   is_dev,
 }
 
