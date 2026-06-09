@@ -64,7 +64,7 @@ export default function Layout({ children }) {
                 <span className="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
               </button>
 
-              <div className="invisible absolute left-0 top-full z-50 mt-2 w-72 rounded-2xl border border-gray-100 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+              <div className="invisible absolute right-0 top-full z-50 mt-2 w-72 rounded-2xl border border-gray-100 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
                 {SOLUTIONS_ITEMS.map((item) => (
                   <Link
                     key={item.href}
