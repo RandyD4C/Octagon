@@ -1,6 +1,7 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useRef } from 'react'
+import SeoHead from '../components/common/SeoHead'
 import {
   ArrowRight,
   Bot,
@@ -121,16 +122,174 @@ const certificates = [
 ]
 
 export default function Home() {
+  const pageRef = useRef(null)
+
+  useEffect(() => {
+    let isActive = true
+    let cleanup = () => {}
+
+    const setupAnimations = async () => {
+      const page = pageRef.current
+      if (!page || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+      const [{ default: gsap }, { ScrollTrigger }] = await Promise.all([
+        import('gsap'),
+        import('gsap/dist/ScrollTrigger'),
+      ])
+
+      if (!isActive) return
+
+      gsap.registerPlugin(ScrollTrigger)
+
+      const listenerCleanups = []
+
+      const ctx = gsap.context(() => {
+        gsap.defaults({ ease: 'power3.out', duration: 0.9 })
+
+        gsap.from('[data-home-hero-item]', {
+          autoAlpha: 0,
+          y: 28,
+          duration: 1,
+          stagger: 0.12,
+          clearProps: 'all',
+        })
+
+        gsap.from('[data-home-hero-visual]', {
+          autoAlpha: 0,
+          y: 22,
+          scale: 0.985,
+          duration: 1.1,
+          stagger: 0.14,
+          delay: 0.18,
+          clearProps: 'all',
+        })
+
+        gsap.from('[data-home-hero-tag]', {
+          autoAlpha: 0,
+          y: 14,
+          duration: 0.75,
+          stagger: 0.06,
+          delay: 0.42,
+          clearProps: 'all',
+        })
+
+        gsap.utils.toArray('[data-home-section]').forEach((section) => {
+          gsap.from(section, {
+            autoAlpha: 0,
+            y: 34,
+            duration: 0.95,
+            clearProps: 'all',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 82%',
+              once: true,
+            },
+          })
+        })
+
+        gsap.utils.toArray('[data-home-stagger]').forEach((group) => {
+          const items = group.querySelectorAll('[data-home-stagger-item]')
+          if (!items.length) return
+
+          gsap.from(items, {
+            autoAlpha: 0,
+            y: 22,
+            duration: 0.8,
+            stagger: 0.08,
+            clearProps: 'all',
+            scrollTrigger: {
+              trigger: group,
+              start: 'top 84%',
+              once: true,
+            },
+          })
+        })
+
+        gsap.utils.toArray('[data-home-image]').forEach((image) => {
+          gsap.from(image, {
+            autoAlpha: 0,
+            scale: 0.985,
+            duration: 0.9,
+            clearProps: 'all',
+            scrollTrigger: {
+              trigger: image,
+              start: 'top 86%',
+              once: true,
+            },
+          })
+        })
+
+        gsap.utils.toArray('[data-home-button]').forEach((button) => {
+          const hoverIn = () => gsap.to(button, { y: -2, duration: 0.28, ease: 'power2.out', overwrite: 'auto' })
+          const hoverOut = () => gsap.to(button, { y: 0, duration: 0.28, ease: 'power2.out', overwrite: 'auto' })
+
+          button.addEventListener('mouseenter', hoverIn)
+          button.addEventListener('mouseleave', hoverOut)
+          button.addEventListener('focus', hoverIn)
+          button.addEventListener('blur', hoverOut)
+
+          listenerCleanups.push(() => {
+            button.removeEventListener('mouseenter', hoverIn)
+            button.removeEventListener('mouseleave', hoverOut)
+            button.removeEventListener('focus', hoverIn)
+            button.removeEventListener('blur', hoverOut)
+          })
+        })
+
+        gsap.utils.toArray('[data-home-count]').forEach((counter) => {
+          const type = counter.getAttribute('data-home-count')
+          const value = { current: 0 }
+
+          const formatters = {
+            tolerance: (current) => `±${current.toFixed(3)} mm`,
+            finish: (current) => `Ra ${current.toFixed(2)}-0.2`,
+          }
+
+          const endValues = {
+            tolerance: 0.002,
+            finish: 0.05,
+          }
+
+          if (!formatters[type]) return
+
+          gsap.to(value, {
+            current: endValues[type],
+            duration: 1.25,
+            ease: 'power2.out',
+            onUpdate: () => {
+              counter.textContent = formatters[type](value.current)
+            },
+            scrollTrigger: {
+              trigger: counter,
+              start: 'top 88%',
+              once: true,
+            },
+          })
+        })
+      }, page)
+
+      cleanup = () => {
+        listenerCleanups.forEach((removeListener) => removeListener())
+        ctx.revert()
+      }
+    }
+
+    setupAnimations()
+
+    return () => {
+      isActive = false
+      cleanup()
+    }
+  }, [])
+
   return (
-    <div className="min-h-screen bg-[#f7f8f8] text-[#111820]">
-      <Head>
-        <title>Octagon Precision Mold | Precision Mold Components, Wire Harness & Automation Support</title>
-        <meta
-          name="description"
-          content="Octagon Precision Mold supplies precision mold components, wire harness assemblies, plastic injection spare parts, auto degating systems, and industrial automation support for OEM and B2B customers."
-          key="description"
-        />
-      </Head>
+    <div ref={pageRef} className="min-h-screen bg-[#f7f8f8] text-[#111820]">
+      <SeoHead
+        title="Octagon Precision Mold | Mold Parts & Wire Harness"
+        description="Octagon Precision Mold supplies precision mold components, wire harness assemblies, injection molding spare parts, and auto degating support for OEM buyers."
+        canonicalPath="/"
+        image="/home/core-products.webp"
+      />
 
       <section className="relative isolate overflow-hidden bg-[#111820] text-white">
         <div className="absolute inset-0">
@@ -148,19 +307,20 @@ export default function Home() {
 
         <div className="container relative z-10 grid min-h-[760px] items-center gap-12 py-20 lg:grid-cols-[0.95fr_1.05fr] lg:py-24">
           <div className="max-w-3xl pt-4">
-            <p className="mb-5 inline-flex border-l-2 border-[#b84a2f] pl-3 text-sm font-semibold tracking-[0.18em] text-slate-200">
+            <p data-home-hero-item className="mb-5 inline-flex border-l-2 border-[#b84a2f] pl-3 text-sm font-semibold tracking-[0.18em] text-slate-200">
               Malaysia precision manufacturing support
             </p>
-            <h1 className="max-w-4xl text-[2.65rem] font-semibold leading-[0.98] tracking-tight text-white sm:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl">
+            <h1 data-home-hero-item className="max-w-4xl text-[2.65rem] font-semibold leading-[0.98] tracking-tight text-white sm:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl">
               Precision parts for mold, harness, and automation production.
             </h1>
-            <p className="mt-7 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
+            <p data-home-hero-item className="mt-7 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
               Octagon supports OEMs, engineers, and procurement teams with custom mold-related parts, wire harness assemblies, injection molding spares, and auto degating solutions built around real production requirements.
             </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div data-home-hero-item className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/contact"
+                data-home-button
                 className="inline-flex items-center justify-center gap-2 bg-white px-6 py-3.5 text-sm font-semibold text-[#111820] transition hover:bg-[#d9dde1] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#111820]"
               >
                 Discuss a requirement
@@ -168,6 +328,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/catalogue"
+                data-home-button
                 className="inline-flex items-center justify-center border border-white/30 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#111820]"
               >
                 View catalogue
@@ -176,7 +337,7 @@ export default function Home() {
 
             <div className="mt-12 grid gap-3 border-t border-white/15 pt-6 sm:grid-cols-2">
               {heroTags.map((tag) => (
-                <div key={tag} className="flex items-center gap-3 text-sm text-slate-200">
+                <div key={tag} data-home-hero-tag className="flex items-center gap-3 text-sm text-slate-200">
                   <span className="h-px w-7 bg-[#b84a2f]" />
                   {tag}
                 </div>
@@ -185,7 +346,7 @@ export default function Home() {
           </div>
 
           <div className="relative hidden min-h-[560px] lg:block">
-            <div className="absolute right-0 top-0 h-[360px] w-[78%] overflow-hidden border border-white/10 bg-slate-900 shadow-2xl">
+            <div data-home-hero-visual className="absolute right-0 top-0 h-[360px] w-[78%] overflow-hidden border border-white/10 bg-slate-900 shadow-2xl">
               <Image
                 src="/solutions/mold-components.webp"
                 alt="Machined mold components arranged in a workshop"
@@ -195,7 +356,7 @@ export default function Home() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute bottom-6 left-0 h-[285px] w-[56%] overflow-hidden border border-white/10 bg-slate-900 shadow-2xl">
+            <div data-home-hero-visual className="absolute bottom-6 left-0 h-[285px] w-[56%] overflow-hidden border border-white/10 bg-slate-900 shadow-2xl">
               <Image
                 src="/solutions/wire-harness.webp"
                 alt="Custom wire harness assembly with terminals and connectors"
@@ -204,7 +365,7 @@ export default function Home() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute bottom-0 right-4 w-[360px] border border-white/15 bg-[#151d26]/95 p-6 shadow-2xl backdrop-blur">
+            <div data-home-hero-visual className="absolute bottom-0 right-4 w-[360px] border border-white/15 bg-[#151d26]/95 p-6 shadow-2xl backdrop-blur">
               <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-4">
                 <span className="text-xs font-semibold tracking-[0.18em] text-slate-400">Capability note</span>
                 <Wrench className="h-5 w-5 text-[#d46b4d]" aria-hidden="true" />
@@ -217,18 +378,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-b border-[#d9dde1] bg-white">
-        <div className="container grid gap-0 md:grid-cols-4">
-          {capabilityMetrics.map((metric) => (
-            <div key={metric.value} className="border-[#d9dde1] py-8 md:border-l md:px-7 md:first:border-l-0">
-              <p className="text-2xl font-semibold tracking-tight text-[#111820]">{metric.value}</p>
+      <section data-home-section className="border-b border-[#d9dde1] bg-white">
+        <div data-home-stagger className="container grid gap-0 md:grid-cols-4">
+          {capabilityMetrics.map((metric, index) => (
+            <div key={metric.value} data-home-stagger-item className="border-[#d9dde1] py-8 md:border-l md:px-7 md:first:border-l-0">
+              <p
+                data-home-count={index === 0 ? 'tolerance' : index === 1 ? 'finish' : undefined}
+                className="text-2xl font-semibold tracking-tight text-[#111820]"
+              >
+                {metric.value}
+              </p>
               <p className="mt-2 max-w-[14rem] text-sm leading-6 text-slate-600">{metric.label}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="bg-[#f7f8f8] py-20 sm:py-28">
+      <section data-home-section className="bg-[#f7f8f8] py-20 sm:py-28">
         <div className="container grid gap-12 lg:grid-cols-[0.72fr_1fr] lg:gap-20">
           <div>
             <p className="border-l-2 border-[#b84a2f] pl-3 text-sm font-semibold tracking-[0.16em] text-slate-500">
@@ -238,29 +404,29 @@ export default function Home() {
               Practical engineering support across mold, cable, and automation requirements.
             </h2>
           </div>
-          <div className="grid gap-7 border-l border-[#ccd2d8] pl-7 sm:grid-cols-2">
-            <div>
+          <div data-home-stagger className="grid gap-7 border-l border-[#ccd2d8] pl-7 sm:grid-cols-2">
+            <div data-home-stagger-item>
               <Factory className="mb-5 h-8 w-8 text-[#b84a2f]" aria-hidden="true" />
               <h3 className="text-lg font-semibold text-[#111820]">Production-aware supply</h3>
               <p className="mt-3 text-sm leading-7 text-slate-600">
                 Parts are discussed in the context of machine use, maintenance urgency, material behavior, and expected fit-up.
               </p>
             </div>
-            <div>
+            <div data-home-stagger-item>
               <ShieldCheck className="mb-5 h-8 w-8 text-[#b84a2f]" aria-hidden="true" />
               <h3 className="text-lg font-semibold text-[#111820]">Quality before shipment</h3>
               <p className="mt-3 text-sm leading-7 text-slate-600">
                 Critical specifications are reviewed through inspection checks, sample confirmation, or project documentation where required.
               </p>
             </div>
-            <div>
+            <div data-home-stagger-item>
               <Layers3 className="mb-5 h-8 w-8 text-[#b84a2f]" aria-hidden="true" />
               <h3 className="text-lg font-semibold text-[#111820]">Custom non-standard work</h3>
               <p className="mt-3 text-sm leading-7 text-slate-600">
                 The team supports drawings, reverse samples, modification requests, and small batches for factory maintenance teams.
               </p>
             </div>
-            <div>
+            <div data-home-stagger-item>
               <Globe2 className="mb-5 h-8 w-8 text-[#b84a2f]" aria-hidden="true" />
               <h3 className="text-lg font-semibold text-[#111820]">B2B export communication</h3>
               <p className="mt-3 text-sm leading-7 text-slate-600">
@@ -271,7 +437,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-20 sm:py-28">
+      <section data-home-section className="bg-white py-20 sm:py-28">
         <div className="container">
           <div className="grid items-end gap-8 border-b border-[#d9dde1] pb-10 lg:grid-cols-[0.95fr_0.55fr]">
             <div>
@@ -291,11 +457,12 @@ export default function Home() {
             {productShowcases.map((product, index) => (
               <article
                 key={product.title}
+                data-home-stagger
                 className={`grid gap-10 py-14 lg:grid-cols-2 lg:items-center lg:py-20 ${
                   index % 2 === 1 ? 'lg:[&>div:first-child]:order-2' : ''
                 }`}
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-slate-200">
+                <div data-home-image data-home-stagger-item className="relative aspect-[16/10] overflow-hidden bg-slate-200">
                   <Image
                     src={product.image}
                     alt={product.title}
@@ -305,7 +472,7 @@ export default function Home() {
                   />
                 </div>
 
-                <div className="max-w-xl lg:px-8">
+                <div data-home-stagger-item className="max-w-xl lg:px-8">
                   <div className="mb-5 flex items-center gap-3 text-sm font-semibold text-slate-500">
                     <product.icon className="h-5 w-5 text-[#b84a2f]" aria-hidden="true" />
                     {product.eyebrow}
@@ -323,6 +490,7 @@ export default function Home() {
                   </div>
                   <Link
                     href={product.href}
+                    data-home-button
                     className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#111820] transition hover:text-[#b84a2f] focus:outline-none focus:ring-2 focus:ring-[#b84a2f] focus:ring-offset-4"
                   >
                     View this capability
@@ -335,7 +503,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#111820] py-20 text-white sm:py-28">
+      <section data-home-section className="bg-[#111820] py-20 text-white sm:py-28">
         <div className="container grid gap-12 lg:grid-cols-[0.72fr_1fr] lg:gap-20">
           <div>
             <p className="border-l-2 border-[#d46b4d] pl-3 text-sm font-semibold tracking-[0.16em] text-slate-300">
@@ -349,9 +517,9 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid gap-px bg-white/12 sm:grid-cols-2">
+          <div data-home-stagger className="grid gap-px bg-white/12 sm:grid-cols-2">
             {processSteps.map((step) => (
-              <div key={step.title} className="bg-[#111820] p-7 transition hover:bg-[#182331]">
+              <div key={step.title} data-home-stagger-item className="bg-[#111820] p-7 transition hover:bg-[#182331]">
                 <step.icon className="mb-8 h-8 w-8 text-[#d46b4d]" aria-hidden="true" />
                 <h3 className="text-lg font-semibold">{step.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-300">{step.description}</p>
@@ -361,7 +529,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-20 sm:py-28">
+      <section data-home-section className="bg-white py-20 sm:py-28">
         <div className="container grid gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-start">
           <div>
             <p className="border-l-2 border-[#b84a2f] pl-3 text-sm font-semibold tracking-[0.16em] text-slate-500">
@@ -372,9 +540,9 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div data-home-stagger className="grid gap-4 sm:grid-cols-2">
             {trustItems.map((item) => (
-              <div key={item} className="flex gap-3 border-t border-[#d9dde1] pt-4 text-sm leading-6 text-slate-700">
+              <div key={item} data-home-stagger-item className="flex gap-3 border-t border-[#d9dde1] pt-4 text-sm leading-6 text-slate-700">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 flex-none text-[#b84a2f]" aria-hidden="true" />
                 {item}
               </div>
@@ -382,9 +550,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="container mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div data-home-stagger className="container mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {applications.map((application) => (
-            <div key={application.name} className="group relative aspect-[4/5] overflow-hidden bg-slate-200">
+            <div key={application.name} data-home-stagger-item data-home-image className="group relative aspect-[4/5] overflow-hidden bg-slate-200">
               <Image
                 src={application.image}
                 alt={`${application.name} application`}
@@ -401,7 +569,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-[#d9dde1] bg-[#f7f8f8] py-20 sm:py-28">
+      <section data-home-section className="border-y border-[#d9dde1] bg-[#f7f8f8] py-20 sm:py-28">
         <div className="container grid gap-12 lg:grid-cols-[0.78fr_1fr] lg:items-center">
           <div>
             <p className="border-l-2 border-[#b84a2f] pl-3 text-sm font-semibold tracking-[0.16em] text-slate-500">
@@ -415,6 +583,7 @@ export default function Home() {
             </p>
             <Link
               href="/about"
+              data-home-button
               className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#111820] transition hover:text-[#b84a2f] focus:outline-none focus:ring-2 focus:ring-[#b84a2f] focus:ring-offset-4"
             >
               Review company profile
@@ -422,10 +591,10 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3">
+          <div data-home-stagger className="grid gap-4 sm:grid-cols-3">
             {certificates.map((certificate, index) => (
-              <div key={certificate} className={`bg-white p-3 shadow-sm ${index === 1 ? 'sm:mt-12' : ''}`}>
-                <div className="relative aspect-[3/4] overflow-hidden border border-[#d9dde1]">
+              <div key={certificate} data-home-stagger-item className={`bg-white p-3 shadow-sm ${index === 1 ? 'sm:mt-12' : ''}`}>
+                <div data-home-image className="relative aspect-[3/4] overflow-hidden border border-[#d9dde1]">
                   <Image
                     src={certificate}
                     alt={`Octagon certificate document ${index + 1}`}
@@ -440,7 +609,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-20 sm:py-28">
+      <section data-home-section className="bg-white py-20 sm:py-28">
         <div className="container">
           <div className="grid gap-10 border border-[#cfd5da] bg-[#111820] p-8 text-white sm:p-12 lg:grid-cols-[1fr_0.42fr] lg:p-16">
             <div>
@@ -455,6 +624,7 @@ export default function Home() {
             <div className="flex items-end lg:justify-end">
               <Link
                 href="/contact"
+                data-home-button
                 className="inline-flex w-full items-center justify-center gap-2 bg-white px-6 py-3.5 text-sm font-semibold text-[#111820] transition hover:bg-[#d9dde1] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#111820] sm:w-auto"
               >
                 Contact sales engineering

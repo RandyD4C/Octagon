@@ -13,6 +13,7 @@ export default function Address(address) {
             <div className={styles.addressMap}>
                 <iframe width="100%"
                     height="500"
+                    title="Octagon Precision Mold location map"
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"

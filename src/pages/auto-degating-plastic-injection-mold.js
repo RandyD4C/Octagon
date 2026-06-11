@@ -1,7 +1,7 @@
-import Head from "next/head"
 import Link from "next/link"
 import { useState } from "react"
 import siteConfig from "../config/siteConfig"
+import SeoHead from "../components/common/SeoHead"
 
 const autoDegatingExamples = [
   {
@@ -51,22 +51,15 @@ const autoDegatingExamples = [
 export default function AutoDegatingPlasticInjectionMoldPage() {
   const [activeImage, setActiveImage] = useState(null)
   const companyName = siteConfig?.company_name || "Octagon Precision Mold"
-  const canonicalUrl = siteConfig?.site_url
-    ? `${siteConfig.site_url}/auto-degating-plastic-injection-mold`
-    : "/auto-degating-plastic-injection-mold"
 
   return (
     <>
-      <Head>
-        <title>
-          Auto Degating Plastic Injection Mold | Improve Efficiency & Reduce Cost | {companyName}
-        </title>
-        <meta
-          name="description"
-          content="Learn how auto degating plastic injection mold systems improve molding efficiency, reduce labor cost, and support consistent production through tunnel gates, 3-plate molds, and automation."
-        />
-        <link rel="canonical" href={canonicalUrl} />
-      </Head>
+      <SeoHead
+        title="Auto Degating Injection Mold | Octagon Precision Mold"
+        description="Auto degating injection mold support for cleaner gate separation, lower trimming labor, and more consistent plastic molding production in OEM programs."
+        canonicalPath="/auto-degating-plastic-injection-mold"
+        image="/solutions/auto-degating-mold.webp"
+      />
 
       <main className="max-w-5xl mx-auto px-6 py-10">
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-slate-500">

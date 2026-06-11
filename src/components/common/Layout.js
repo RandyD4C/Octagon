@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router" // 1. Import useRouter
 import { Menu, X } from "lucide-react"
@@ -23,17 +23,49 @@ const SOLUTIONS_ITEMS = [
 
 export default function Layout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const headerRef = useRef(null)
   const router = useRouter() // 2. Initialize router
 
   // 3. Check if we are on the Home page
   const isHomePage = router.pathname === "/"
+
+  useEffect(() => {
+    const header = headerRef.current
+    if (!isHomePage || !header || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
+    let isActive = true
+    let ctx
+
+    const setupHeaderMotion = async () => {
+      const { default: gsap } = await import("gsap")
+
+      if (!isActive) return
+
+      ctx = gsap.context(() => {
+        gsap.from(header, {
+          autoAlpha: 0,
+          y: -10,
+          duration: 0.55,
+          ease: "power2.out",
+          clearProps: "all",
+        })
+      }, header)
+    }
+
+    setupHeaderMotion()
+
+    return () => {
+      isActive = false
+      ctx?.revert()
+    }
+  }, [isHomePage])
 
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900 w-full" style={{ fontFamily: '"Poppins", sans-serif' }}>
 
       {/* Navbar */}
-      <header className="bg-white text-gray-900 sticky top-0 z-50 shadow-md py-4 transition-colors duration-300">
+      <header ref={headerRef} className="bg-white text-gray-900 sticky top-0 z-50 shadow-md py-4 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
           <Link href="/">
             <img

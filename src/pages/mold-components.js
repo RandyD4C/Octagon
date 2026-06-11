@@ -4,8 +4,8 @@ export default function MoldComponentsPage() {
   return (
     <SeoLandingPage
       slug="/mold-components"
-      title="Mold Components Manufacturer | Precision Mold Parts | Octagon Precision Mold"
-      description="Octagon Precision Mold is a mold components manufacturer supporting industrial buyers with precision mold parts, non-standard components, and tooling-related production for Malaysia and global markets."
+      title="Mold Components Manufacturer | Octagon Precision Mold"
+      description="Octagon Precision Mold manufactures precision mold components, custom tooling parts, inserts, pins, sleeves, and non-standard mold parts for industrial buyers."
       keyword="Mold Components Manufacturer"
       catalogueLinkLabel="View our mold components catalogue"
       intro="This page is for tooling engineers, production managers, and procurement teams sourcing a mold components manufacturer for precision parts and non-standard requirements. Octagon Precision Mold supports mold-related manufacturing with practical attention to fit, tolerance, and production reliability."

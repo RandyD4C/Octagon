@@ -1,6 +1,6 @@
-import Head from "next/head"
 import Link from "next/link"
 import siteConfig from "../../config/siteConfig"
+import SeoHead from "./SeoHead"
 
 function Section({ title, children }) {
   return (
@@ -38,16 +38,15 @@ export default function SeoLandingPage({
   relatedLinks,
 }) {
   const companyName = siteConfig?.company_name || "Octagon Precision Mold"
-  const siteUrl = siteConfig?.site_url || ""
-  const canonicalUrl = siteUrl ? `${siteUrl}${slug}` : slug
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} key="description" />
-        <link rel="canonical" href={canonicalUrl} />
-      </Head>
+      <SeoHead
+        title={title}
+        description={description}
+        canonicalPath={slug}
+        image={image}
+      />
 
       <main className="max-w-5xl mx-auto px-6 py-10">
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-slate-500">

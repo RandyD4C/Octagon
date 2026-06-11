@@ -4,8 +4,8 @@ export default function PlasticInjectionSparePartsPage() {
   return (
     <SeoLandingPage
       slug="/plastic-injection-spare-parts"
-      title="Plastic Injection Spare Parts Supplier | Injection Molding Support | Octagon Precision Mold"
-      description="Octagon Precision Mold supplies plastic injection spare parts for maintenance, replacement planning, and tooling support. Suitable for Malaysia manufacturers and global industrial buyers."
+      title="Plastic Injection Spare Parts | Octagon Precision Mold"
+      description="Octagon Precision Mold supplies plastic injection spare parts for tooling maintenance, replacement planning, uptime support, and industrial production teams."
       keyword="Plastic Injection Spare Parts Supplier"
       catalogueLinkLabel="View our spare parts catalogue"
       intro="This page is for maintenance engineers, tooling teams, and procurement managers who need a dependable plastic injection spare parts supplier. Octagon Precision Mold supports replacement components and spare part planning for injection molding operations that prioritize uptime and dimensional consistency."

@@ -1,4 +1,3 @@
-import Head from "next/head"
 import { useState, useEffect, useRef } from "react"
 import siteConfig from "../config/siteConfig"
 import PageHeader from "../components/common/PageHeader"
@@ -8,6 +7,7 @@ import styles from "../styles/contact.module.css"
 import mammoth from "mammoth"
 import parse from "html-react-parser"
 import ReCAPTCHA from "react-google-recaptcha"
+import SeoHead from "../components/common/SeoHead"
 
 export default function Contact() {
     // ==========================================
@@ -208,14 +208,11 @@ export default function Contact() {
     // ==========================================
     return (
         <div className="w-full">
-            <Head>
-                <title>Contact Octagon Precision Mold | Enquiry & RFQ Support</title>
-                <meta
-                    name="description"
-                    content="Contact Octagon Precision Mold for mould components, auto degating solutions, plastic injection spare parts, wire harness enquiries, and RFQ discussions."
-                    key="description"
-                />
-            </Head>
+            <SeoHead
+                title="Contact Octagon Precision Mold | RFQ Support"
+                description="Contact Octagon Precision Mold for mould components, auto degating solutions, plastic injection spare parts, wire harness enquiries, and RFQ discussions."
+                canonicalPath="/contact"
+            />
             <PageHeader title="Contact Us" />
             <div className={styles.contactPage}>
                 <div className={`${styles.animateIn} ${styles.delay1}`}>

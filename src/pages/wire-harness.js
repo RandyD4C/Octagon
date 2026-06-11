@@ -4,8 +4,8 @@ export default function WireHarnessPage() {
   return (
     <SeoLandingPage
       slug="/wire-harness"
-      title="Wire Harness Supplier Malaysia | Custom Wire Harness Manufacturer | Octagon Precision Mold"
-      description="Octagon Precision Mold supports OEM and industrial buyers with custom wire harness manufacturing, cable assembly, and sourcing support for Malaysia and global B2B programs."
+      title="Wire Harness Supplier Malaysia | Octagon Precision Mold"
+      description="Octagon Precision Mold supplies custom wire harness assemblies, cable assembly support, connectors, terminals, and RFQ coordination for OEM buyers."
       keyword="Wire Harness Supplier Malaysia"
       catalogueLinkLabel="View our wire harness catalogue"
       intro="This page is for engineers, procurement teams, and OEM buyers looking for a reliable wire harness supplier in Malaysia. Octagon Precision Mold supports custom wire harness manufacturing, cable assembly planning, and production coordination for industrial applications."

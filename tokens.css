@@ -1,0 +1,61 @@
+/* Hallmark design tokens — Octagon Precision Mold
+ * macrostructure: Workbench · theme: custom industrial
+ * axes: dark / display-heavy / cool
+ * Generated: 2026-05-28
+ */
+
+:root {
+    /* ── Color ──────────────────────────────────────────────────── */
+    --oct-ink:          oklch(14% 0.012 255);   /* near-black body text */
+    --oct-graphite:     oklch(18% 0.015 255);   /* dark section backgrounds */
+    --oct-steel:        oklch(46% 0.02 255);    /* secondary text */
+    --oct-steel-light:  oklch(70% 0.018 255);   /* on-dark secondary text */
+    --oct-mist:         oklch(96.5% 0.005 255); /* light alternate background */
+    --oct-paper:        oklch(99.5% 0 0);       /* white / primary background */
+    --oct-rule:         oklch(89% 0.008 255);   /* hairline dividers (light bg) */
+    --oct-rule-dark:    oklch(28% 0.012 255);   /* hairline dividers (dark bg) */
+    --oct-accent:       oklch(38% 0.13 255);    /* brand steel-blue (from #154A9A) */
+    --oct-accent-hov:   oklch(44% 0.14 255);    /* accent hover state */
+
+    /* ── Typography ──────────────────────────────────────────────── */
+    --font-display: "Archivo Black", "Arial Black", sans-serif;
+    --font-body:    "Poppins", system-ui, -apple-system, sans-serif;
+
+    /* ── Type scale ──────────────────────────────────────────────── */
+    --text-label:   0.6875rem;   /* 11px — eyebrow labels */
+    --text-sm:      0.8125rem;   /* 13px — spec items, captions */
+    --text-base:    0.9375rem;   /* 15px — body paragraph */
+    --text-md:      1.0625rem;   /* 17px — lead body */
+    --text-lg:      1.25rem;     /* 20px — minor headings */
+    --text-xl:      1.625rem;    /* 26px — section sub-heads */
+    --text-2xl:     2.125rem;    /* 34px — section heads (small) */
+    --text-3xl:     2.75rem;     /* 44px — section heads */
+    --text-4xl:     4.25rem;     /* 68px — hero display */
+
+    /* ── Spacing (4-pt base) ─────────────────────────────────────── */
+    --space-1:   0.25rem;    /* 4px  */
+    --space-2:   0.5rem;     /* 8px  */
+    --space-3:   0.75rem;    /* 12px */
+    --space-4:   1rem;       /* 16px */
+    --space-5:   1.25rem;    /* 20px */
+    --space-6:   1.5rem;     /* 24px */
+    --space-8:   2rem;       /* 32px */
+    --space-10:  2.5rem;     /* 40px */
+    --space-12:  3rem;       /* 48px */
+    --space-16:  4rem;       /* 64px */
+    --space-20:  5rem;       /* 80px */
+    --space-28:  7rem;       /* 112px */
+
+    /* ── Motion ──────────────────────────────────────────────────── */
+    --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --dur-fast:    180ms;
+    --dur-base:    300ms;
+    --dur-slow:    560ms;
+
+    /* ── Radius ──────────────────────────────────────────────────── */
+    --radius-sm:  2px;    /* buttons, table rows */
+    --radius-md:  4px;    /* cards, images */
+    --radius-lg:  8px;    /* large panels */
+}

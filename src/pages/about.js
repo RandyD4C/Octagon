@@ -1,26 +1,26 @@
-import Head from "next/head"
 import { useState, useEffect, useRef } from "react"
 import siteConfig from "../config/siteConfig"
 import PageHeader from "../components/common/PageHeader"
 import Title from "../components/common/Title"
 import Animate from "../components/common/AboutScrollAnim"
+import SeoHead from "../components/common/SeoHead"
 import { ChevronLeft, ChevronRight, MapPin } from "lucide-react"
 
 
 const CLIENT_LOGOS = [
-    "/about/knights-engineering-logo.webp",
-    "/about/q-plas-logo.webp",
-    "/about/class-A-logo.webp",
-    "/about/exceptional-mould-logo.webp",
-    "/about/hp-logo.webp",
-    "/about/meHow-logo.webp",
-    "/about/Nationgate-logo.webp",
-    "/about/Modernria-logo.webp",
-    "/about/Meiban-logo.webp",
-    "/about/IMR-logo.webp",
-    "/about/Junyu.webp",
-    "/about/PDI.webp",
-    "/about/silitech logo.webp"
+    { src: "/about/knights-engineering-logo.webp", alt: "Knights Engineering logo" },
+    { src: "/about/q-plas-logo.webp", alt: "Q Plas logo" },
+    { src: "/about/class-A-logo.webp", alt: "Class A logo" },
+    { src: "/about/exceptional-mould-logo.webp", alt: "Exceptional Mould logo" },
+    { src: "/about/hp-logo.webp", alt: "HP logo" },
+    { src: "/about/meHow-logo.webp", alt: "MeHow logo" },
+    { src: "/about/Nationgate-logo.webp", alt: "Nationgate logo" },
+    { src: "/about/Modernria-logo.webp", alt: "Modernria logo" },
+    { src: "/about/Meiban-logo.webp", alt: "Meiban logo" },
+    { src: "/about/IMR-logo.webp", alt: "IMR logo" },
+    { src: "/about/Junyu.webp", alt: "Junyu logo" },
+    { src: "/about/PDI.webp", alt: "PDI logo" },
+    { src: "/about/silitech logo.webp", alt: "Silitech logo" }
 ];
 
 const Counter = ({ target, duration = 2000, suffix = "" }) => {
@@ -134,15 +134,13 @@ export default function About() {
     return (
         <Animate>
             <div className="w-full flex flex-col justify-center items-center flex-1">
-                <Head>
-                    <title>About Octagon Precision Mold | Precision Manufacturing Company in Malaysia</title>
-                    <meta
-                        name="description"
-                        content="Learn more about Octagon Precision Mold, a Malaysia-based precision manufacturing company supporting global customers with mold-related equipment, custom parts, and industrial solutions."
-                        key="description"
-                    />
-                </Head>
-                <PageHeader title="About Us" />
+                <SeoHead
+                    title="About Octagon Precision Mold Malaysia"
+                    description="Learn about Octagon Precision Mold in Malaysia, supporting global customers with mold-related equipment, custom precision parts, and industrial solutions."
+                    canonicalPath="/about"
+                    image="/about/about-us.webp"
+                />
+                <PageHeader title="About Us" headingLevel={2} />
                 <div className="relative flex h-[400px] md:h-[500px] lg:h-[650px] w-full overflow-hidden">
                     {/* Background Image Layer */}
                     <div className="absolute inset-0 bg-[url('/about/about-us.webp')] bg-cover bg-center">
@@ -458,7 +456,8 @@ export default function About() {
                             return (
                                 <img
                                     key={`desktop-logo-${i}`}
-                                    src={logo}
+                                    src={logo.src}
+                                    alt={logo.alt}
                                     style={{
                                         transform: `translateX(${translateX}px) scale(${isCenter ? 1.1 : 0.95})`,
                                         zIndex: isCenter ? 10 : 5 - absOffset,
@@ -488,7 +487,8 @@ export default function About() {
                             return (
                                 <img
                                     key={`mobile-logo-${i}`}
-                                    src={logo}
+                                    src={logo.src}
+                                    alt={logo.alt}
                                     style={{
                                         "--offset": offset,
                                         "--scale": isCenter ? 1.1 : 0.95,

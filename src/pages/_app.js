@@ -1,6 +1,5 @@
 // src/pages/_app.js
 import '../styles/globals.css'
-import Head from 'next/head'
 import Layout from '../components/common/Layout'
 import { useEffect } from 'react'
 import AOS from 'aos'
@@ -17,9 +16,6 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Head>
-        <meta name="description" content="Octagon Precision Mold - High-Precision Manufacturing Solutions" key="description" />
-      </Head>
       <Layout>
         <Component {...pageProps} />
       </Layout>
