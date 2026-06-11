@@ -1,20 +1,14 @@
 // src/components/common/PageFooter.js
 import Link from "next/link"
-import { Mail, Phone, MapPin, Globe, ArrowUpRight } from "lucide-react"
+import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react"
 import styles from "../../styles/PageFooter.module.css"
 
-const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
-    { label: "Catalogue", href: "/catalogue" },
+const footerLinks = [
+    { label: "Auto Degating Plastic Injection Mold", href: "/auto-degating-plastic-injection-mold" },
+    { label: "Wire Harness", href: "/wire-harness" },
+    { label: "Plastic Injection Spare Parts", href: "/plastic-injection-spare-parts" },
+    { label: "Mold Components", href: "/mold-components" },
     { label: "Contact Us", href: "/contact" },
-]
-
-const services = [
-    { label: "Precision Molds", href: "/catalogue" },
-    { label: "Auto Degating", href: "/auto-degating-plastic-injection-mold" },
-    { label: "Wire Harnesses", href: "/catalogue" },
-    { label: "Automation", href: "/catalogue" },
 ]
 
 export default function Footer({ siteConfig }) {
@@ -22,78 +16,74 @@ export default function Footer({ siteConfig }) {
     const name = siteConfig?.company_name ?? "Your Company"
 
     return (
-        <footer className={`${styles.footer} mt-8`} data-aos="fade-up" data-aos-duration="400">
-            {/* Top accent line */}
-            <div className={styles.accentLine} />
-
+        <footer className={`${styles.footer} mt-8`}>
             <div className={styles.container}>
-                <div className={styles.flexLayout}>
-                    {/* Brand Section */}
-                    <div className={styles.brandSection} data-aos="fade-up" data-aos-duration="800">
+                {/* Closing statement */}
+                <div className={styles.statementRow}>
+                    <p className={styles.statement}>
+                        Precision tooling, engineered to{" "}
+                        <span className={styles.statementAccent}>±0.002&nbsp;mm</span>.
+                    </p>
+                    <Link href="/contact" className={styles.statementCta}>
+                        Start a project
+                        <ArrowUpRight size={18} className={styles.ctaIcon} aria-hidden="true" />
+                    </Link>
+                </div>
+
+                {/* Meta band */}
+                <div className={styles.metaBand}>
+                    <div className={styles.brandCol}>
                         <span className={styles.brandName}>
                             OCTAGON<span className={styles.brandDot}>.</span>
                         </span>
-                        <p className={styles.tagline}>
-                            {siteConfig?.tagline ?? "Delivering quality solutions to clients worldwide."}
+                        <p className={styles.brandLine}>
+                            Precision molds, auto degating, wire harnesses and automation —
+                            machined in Penang, delivered worldwide.
                         </p>
                     </div>
 
-                    {/* Navigation */}
-                    <div className={styles.navSection} data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                        <span className={styles.navTitle}>Quick Links</span>
-                        {navLinks.map((link) => (
-                            <Link key={link.href} href={link.href} className={styles.navLink}>
+                    <nav className={styles.metaCol} aria-label="Footer navigation">
+                        <span className={styles.colLabel}>Solutions</span>
+                        {footerLinks.map((link) => (
+                            <Link key={link.label} href={link.href} className={styles.navLink}>
                                 {link.label}
-                                <ArrowUpRight size={12} className={styles.linkIcon} />
                             </Link>
                         ))}
-                    </div>
+                    </nav>
 
-                    {/* Expertise */}
-                    <div className={styles.navSection} data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
-                        <span className={styles.navTitle}>Our Expertise</span>
-                        {services.map((service) => (
-                            <Link key={service.label} href={service.href} className={styles.navLink}>
-                                {service.label}
-                                <ArrowUpRight size={12} className={styles.linkIcon} />
-                            </Link>
-                        ))}
-                    </div>
-
-                    {/* Contact Details */}
-                    <div className={`${styles.navSection} ${styles.contactSection}`} data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
-                        <span className={styles.navTitle}>Get in Touch</span>
+                    <div className={styles.metaCol}>
+                        <span className={styles.colLabel}>Contact</span>
                         <a
                             href="https://www.google.com/maps/search/?api=1&query=No+2,+Lebuh+Mayang+Pasir,+Bayan+Baru+11950,+Pulau+Pinang,+MALAYSIA"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`${styles.contactLink} ${styles.addressLink}`}
                         >
-                            <MapPin size={16} className="text-blue-500 shrink-0" />
-                            <span className={styles.contactText}>
+                            <MapPin size={15} className={styles.contactIcon} aria-hidden="true" />
+                            <span>
                                 No 2, Lebuh Mayang Pasir, <br />
-                                Bayan Baru 11950, Pulau Pinang<br />
-                                MALAYSIA
+                                Bayan Baru 11950, Pulau Pinang, Malaysia
                             </span>
                         </a>
                         <a href="mailto:sales@octagon-mold.com" className={styles.contactLink}>
-                            <Mail size={16} className="text-blue-500 shrink-0" />
-                            <span className={styles.contactText}>sales@octagon-mold.com</span>
+                            <Mail size={15} className={styles.contactIcon} aria-hidden="true" />
+                            <span>sales@octagon-mold.com</span>
                         </a>
                         <a href="tel:+60164205848" className={styles.contactLink}>
-                            <Phone size={16} className="text-blue-500 shrink-0" />
-                            <span className={styles.contactText}>+60 16-420 5848</span>
+                            <Phone size={15} className={styles.contactIcon} aria-hidden="true" />
+                            <span>+60 16-420 5848</span>
                         </a>
-                        <div className={styles.officeHours}>
-                            <span className={styles.hoursTitle}>Office Hours:</span>
-                            <span className={styles.hoursText}>Mon - Fri: 8:30 AM - 5:30 PM</span>
-                        </div>
                     </div>
                 </div>
 
-                {/* Bottom bar */}
+                {/* Bottom rule */}
                 <div className={styles.bottomBar}>
-                    © {year} {name}. All rights reserved.
+                    <span className={styles.copyright}>
+                        © {year} {name}. All rights reserved.
+                    </span>
+                    <span className={styles.metaMono}>
+                        Penang · Malaysia · GMT+8 · Mon–Fri 08:30–17:30
+                    </span>
                 </div>
             </div>
         </footer>
