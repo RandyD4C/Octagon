@@ -156,7 +156,7 @@ export default function Layout({ children }) {
 
       {/* Main Content */}
       {/* 4. DYNAMIC PADDING: If it's home page, use py-0. Otherwise, use py-6 */}
-      <main className={`flex-grow w-full overflow-x-hidden ${isHomePage ? 'py-0' : 'py-6'}`}>
+      <main className={`flex-grow w-full ${isHomePage ? 'py-0' : 'py-6'}`}>
         {children}
       </main>
 

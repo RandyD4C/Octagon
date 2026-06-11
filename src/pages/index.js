@@ -1,12 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import SeoHead from '../components/common/SeoHead'
 import {
   ArrowRight,
   Bot,
   Cable,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   ClipboardCheck,
   Component,
   Factory,
@@ -116,13 +118,29 @@ const applications = [
 ]
 
 const certificates = [
-  '/certificates/honorary-certificate-1.webp',
-  '/certificates/honorary-certificate-2.webp',
-  '/certificates/honorary-certificate-3.webp',
+  { src: '/certificates/honorary-certificate-1.webp', title: 'Octagon certificate document 1' },
+  { src: '/certificates/honorary-certificate-2.webp', title: 'Octagon certificate document 2' },
+  { src: '/certificates/honorary-certificate-3.webp', title: 'Octagon certificate document 3' },
+  { src: '/certificates/honorary-certificate-4.webp', title: 'Octagon certificate document 4' },
+  { src: '/certificates/honorary-certificate-5.webp', title: 'Octagon certificate document 5' },
+  { src: '/certificates/honorary-certificate-6.webp', title: 'Octagon certificate document 6' },
+  { src: '/certificates/honorary-certificate-8.webp', title: 'Octagon certificate document 7' },
 ]
 
 export default function Home() {
   const pageRef = useRef(null)
+  const [activeCertificateIndex, setActiveCertificateIndex] = useState(0)
+
+  const certificateCount = certificates.length
+  const activeCertificate = certificates[activeCertificateIndex]
+
+  const showPreviousCertificate = () => {
+    setActiveCertificateIndex((current) => (current - 1 + certificateCount) % certificateCount)
+  }
+
+  const showNextCertificate = () => {
+    setActiveCertificateIndex((current) => (current + 1) % certificateCount)
+  }
 
   useEffect(() => {
     let isActive = true
@@ -462,7 +480,7 @@ export default function Home() {
                   index % 2 === 1 ? 'lg:[&>div:first-child]:order-2' : ''
                 }`}
               >
-                <div data-home-image data-home-stagger-item className="relative aspect-[16/10] overflow-hidden bg-slate-200">
+                <div data-home-image className="relative aspect-[16/10] overflow-hidden bg-slate-200">
                   <Image
                     src={product.image}
                     alt={product.title}
@@ -552,7 +570,7 @@ export default function Home() {
 
         <div data-home-stagger className="container mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {applications.map((application) => (
-            <div key={application.name} data-home-stagger-item data-home-image className="group relative aspect-[4/5] overflow-hidden bg-slate-200">
+            <div key={application.name} data-home-image className="group relative aspect-[4/5] overflow-hidden bg-slate-200">
               <Image
                 src={application.image}
                 alt={`${application.name} application`}
@@ -560,8 +578,9 @@ export default function Home() {
                 sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                 className="object-cover transition duration-700 group-hover:scale-[1.04]"
               />
+              <div className="absolute inset-0 bg-black/35 transition duration-700 group-hover:bg-black/45" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#111820]/78 via-[#111820]/18 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-5">
+              <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
                 <p className="text-lg font-semibold text-white">{application.name}</p>
               </div>
             </div>
@@ -570,7 +589,7 @@ export default function Home() {
       </section>
 
       <section data-home-section className="border-y border-[#d9dde1] bg-[#f7f8f8] py-20 sm:py-28">
-        <div className="container grid gap-12 lg:grid-cols-[0.78fr_1fr] lg:items-center">
+        <div className="container grid gap-12 lg:grid-cols-[0.68fr_1.12fr] lg:items-center">
           <div>
             <p className="border-l-2 border-[#b84a2f] pl-3 text-sm font-semibold tracking-[0.16em] text-slate-500">
               Quality evidence
@@ -591,20 +610,59 @@ export default function Home() {
             </Link>
           </div>
 
-          <div data-home-stagger className="grid gap-4 sm:grid-cols-3">
-            {certificates.map((certificate, index) => (
-              <div key={certificate} data-home-stagger-item className={`bg-white p-3 shadow-sm ${index === 1 ? 'sm:mt-12' : ''}`}>
-                <div data-home-image className="relative aspect-[3/4] overflow-hidden border border-[#d9dde1]">
-                  <Image
-                    src={certificate}
-                    alt={`Octagon certificate document ${index + 1}`}
-                    fill
-                    sizes="(min-width: 1024px) 18vw, (min-width: 640px) 30vw, 100vw"
-                    className="object-cover"
-                  />
+          <div data-home-stagger className="space-y-5">
+            <div className="relative overflow-hidden border border-[#d9dde1] bg-white px-12 py-8 shadow-sm sm:px-16 lg:px-20 lg:py-10">
+              <button
+                type="button"
+                aria-label="Previous certificate"
+                onClick={showPreviousCertificate}
+                className="absolute left-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-[#cfd5da] bg-white text-[#111820] shadow-sm transition hover:border-[#b84a2f] hover:text-[#b84a2f] focus:outline-none focus:ring-2 focus:ring-[#b84a2f] focus:ring-offset-2"
+              >
+                <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+              </button>
+
+              <div className="flex min-h-[560px] items-center justify-center lg:min-h-[680px]">
+                <div
+                  key={activeCertificate.src}
+                  data-active-certificate="true"
+                  data-home-stagger-item
+                  className="w-full max-w-[520px] bg-white p-4 shadow-sm transition duration-500"
+                >
+                  <div data-home-image className="relative aspect-[3/4] overflow-hidden border border-[#d9dde1] bg-white">
+                    <Image
+                      src={activeCertificate.src}
+                      alt={activeCertificate.title}
+                      fill
+                      sizes="(min-width: 1024px) 34vw, (min-width: 640px) 60vw, 78vw"
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
               </div>
-            ))}
+
+              <button
+                type="button"
+                aria-label="Next certificate"
+                onClick={showNextCertificate}
+                className="absolute right-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-[#cfd5da] bg-white text-[#111820] shadow-sm transition hover:border-[#b84a2f] hover:text-[#b84a2f] focus:outline-none focus:ring-2 focus:ring-[#b84a2f] focus:ring-offset-2"
+              >
+                <ChevronRight className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </div>
+
+            <div className="flex items-center justify-center gap-2">
+              {certificates.map((certificate, index) => (
+                <button
+                  key={certificate.src}
+                  type="button"
+                  aria-label={`Show certificate ${index + 1}`}
+                  onClick={() => setActiveCertificateIndex(index)}
+                  className={`h-2.5 w-2.5 rounded-full transition ${
+                    index === activeCertificateIndex ? 'bg-[#b84a2f]' : 'bg-slate-300 hover:bg-slate-400'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
