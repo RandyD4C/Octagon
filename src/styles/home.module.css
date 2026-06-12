@@ -1,0 +1,1090 @@
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V5
+ * Hallmark · macrostructure: Narrative Workflow · hero: 3D assembly marquee, copy-left
+ * theme: custom · vibe: "machined graphite, steel-blue, engineering-grade"
+ * paper: oklch(15% 0.010 250) · accent: oklch(42% 0.135 257)
+ * display: Barlow Condensed · body: Poppins · mono: IBM Plex Mono (one register: technical labels)
+ * axes: dark / display-condensed-bold / cool
+ * genre: modern-minimal · nav: existing site header (kept, out of scope) · footer: existing PageFooter (kept)
+ * enrichment: real-time 3D (procedural R3F) + Tier-B hand-built SVG
+ * contrast: pass (46–50; accent-ink ≡ --oct-ink) · slop: pass (51–55) · honest: pass (56)
+ * chrome: pass (57) · tokens: pass (58; 3D material paint centralized in METALS map, scene content)
+ * responsive: pass (59) · icons: pass (60) · mobile: pass (36, 59, 61–69)
+ * studied: no · context: user brief + inferred · 2026-06-11
+ */
+
+.page {
+  /* ── Tokens ─────────────────────────────────────────────────────── */
+  --oct-paper: oklch(15% 0.01 250);
+  --oct-paper-2: oklch(18.5% 0.012 250);
+  --oct-paper-3: oklch(23% 0.013 250);
+  --oct-ink: oklch(93% 0.008 250);
+  --oct-ink-2: oklch(73% 0.012 250);
+  --oct-muted: oklch(67% 0.012 250);
+  --oct-rule: oklch(30% 0.012 250);
+  --oct-rule-2: oklch(24% 0.01 250);
+  --oct-accent: oklch(42% 0.135 257);
+  --oct-accent-hov: oklch(48% 0.14 257);
+  --oct-accent-2: oklch(70% 0.11 252);
+  --oct-focus: oklch(74% 0.17 255);
+  --oct-ghost: oklch(48% 0.03 252);
+
+  /* surface-derived shades (token-locked, no inline values downstream) */
+  --oct-edge: oklch(13% 0.01 250);
+  --oct-scrim: oklch(13% 0.01 250 / 0.88);
+  --oct-scrim-soft: oklch(13% 0.01 250 / 0.45);
+  --oct-glow: oklch(22% 0.018 252 / 0.85);
+  --oct-glow-soft: oklch(21% 0.016 252 / 0.8);
+  --oct-grid-line: oklch(30% 0.012 250 / 0.12);
+  --oct-board: oklch(17% 0.012 250);
+  --oct-board-dot: oklch(30% 0.012 250 / 0.5);
+  --oct-wire: oklch(58% 0.014 250);
+  --oct-wire-trunk: oklch(64% 0.012 250);
+  --oct-tie: oklch(40% 0.012 250);
+  --oct-iso-top: oklch(32% 0.018 252);
+  --oct-iso-top-edge: oklch(42% 0.02 252);
+  --oct-iso-left: oklch(21% 0.013 250);
+  --oct-iso-right: oklch(26% 0.015 250);
+  --oct-stage-glow: oklch(22% 0.016 252);
+  --oct-stage-deep: oklch(16.5% 0.011 250);
+
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'Poppins', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  --text-label: 0.72rem;
+  --text-sm: 0.85rem;
+  --text-base: 0.9375rem;
+  --text-lede: 1.0625rem;
+  --text-title: clamp(1.9rem, 3.2vw + 0.4rem, 3.1rem);
+  --text-number: clamp(2.6rem, 4.6vw, 4.4rem);
+  --text-display: clamp(2.9rem, 6vw + 0.4rem, 5.6rem);
+  --text-stat: clamp(1.7rem, 2.6vw, 2.6rem);
+
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: clamp(6rem, 13vh, 10rem);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur-base: 300ms;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --header-h: 72px;
+
+  background: var(--oct-paper);
+  color: var(--oct-ink);
+  font-family: var(--font-body);
+  overflow-x: clip;
+}
+
+@media (min-width: 640px) {
+  .page { --header-h: 80px; }
+}
+@media (min-width: 768px) {
+  .page { --header-h: 88px; }
+}
+
+.frame {
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* ── Hero ──────────────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--header-h));
+  display: grid;
+  align-items: center;
+  overflow: clip;
+}
+
+.heroPoster {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(58% 48% at 68% 52%, var(--oct-glow), transparent 70%),
+    repeating-linear-gradient(0deg, var(--oct-grid-line) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(90deg, var(--oct-grid-line) 0 1px, transparent 1px 72px),
+    linear-gradient(180deg, var(--oct-edge), var(--oct-paper) 30%, var(--oct-paper) 78%, var(--oct-edge));
+}
+
+/* keeps copy legible while components fly through the left half */
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, var(--oct-scrim), var(--oct-scrim-soft) 38%, transparent 60%);
+  pointer-events: none;
+}
+
+.heroCanvas {
+  position: absolute;
+  inset: 0;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  /* heavier bottom padding seats the hero into the page (and clears the HUD) */
+  padding-block: var(--space-2xl) calc(var(--space-2xl) * 1.5);
+}
+
+.heroCopy {
+  max-width: 600px;
+}
+
+.heroEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--oct-accent-2);
+  margin: 0 0 var(--space-md);
+}
+
+.heroEyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: var(--oct-accent-2);
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-display);
+  line-height: 1.02;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--oct-ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.heroLede {
+  margin: var(--space-md) 0 0;
+  max-width: 50ch;
+  font-size: var(--text-lede);
+  line-height: 1.8;
+  color: var(--oct-ink-2);
+}
+
+.heroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+}
+
+/* HUD — assembly narration, bottom left */
+.heroHud {
+  position: absolute;
+  z-index: 2;
+  left: clamp(1.25rem, 4vw, 3rem);
+  bottom: clamp(1.25rem, 4vh, 2.5rem);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--oct-muted);
+}
+
+.hudTicks {
+  display: flex;
+  gap: 4px;
+}
+
+.hudTick {
+  width: 18px;
+  height: 2px;
+  background: var(--oct-rule);
+  transition: background var(--dur-base) var(--ease-out);
+}
+
+.hudTickActive {
+  background: var(--oct-accent-2);
+}
+
+/* ── CTAs ──────────────────────────────────────────────────────────── */
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+  will-change: transform;
+}
+
+.ctaPrimary {
+  background: var(--oct-accent);
+  color: var(--oct-ink);
+  border: 1px solid transparent;
+}
+
+.ctaPrimary:hover {
+  background: var(--oct-accent-hov);
+}
+
+.ctaPrimary:active {
+  background: var(--oct-accent);
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: var(--oct-ink);
+  border: 1px solid var(--oct-rule);
+}
+
+.ctaSecondary:hover {
+  border-color: var(--oct-ink-2);
+}
+
+.ctaSecondary:active {
+  border-color: var(--oct-muted);
+}
+
+.cta:focus-visible,
+.stageLink:focus-visible,
+.partTab:focus-visible {
+  outline: 2px solid var(--oct-focus);
+  outline-offset: 3px;
+}
+
+/* ── Stage scaffolding (Narrative Workflow) ────────────────────────── */
+
+.stage {
+  padding-block: var(--space-3xl) 0;
+}
+
+.stageHead {
+  border-top: 2px solid var(--oct-rule);
+  padding-top: var(--space-md);
+  max-width: 720px;
+}
+
+.stageNumber {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-number);
+  line-height: 1;
+  color: var(--oct-ghost);
+  margin: 0;
+}
+
+.stageTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-title);
+  line-height: 1.04;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--oct-ink);
+  margin: var(--space-2xs) 0 0;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.stageLede {
+  margin: var(--space-sm) 0 0;
+  max-width: 52ch;
+  font-size: var(--text-base);
+  line-height: 1.8;
+  color: var(--oct-ink-2);
+}
+
+.stageLink {
+  display: inline-block;
+  margin-top: var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--oct-accent-2);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  white-space: nowrap;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.stageLink:hover {
+  border-bottom-color: var(--oct-accent-2);
+}
+
+.stageLink:active {
+  color: var(--oct-ink);
+}
+
+/* ── Stage 01 · Mold exploded view ─────────────────────────────────── */
+
+.moldWrap {
+  height: 250vh;
+}
+
+.moldSticky {
+  position: sticky;
+  top: var(--header-h);
+  height: calc(100vh - var(--header-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: var(--space-lg);
+}
+
+.moldGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  gap: var(--space-xl);
+  align-items: center;
+  margin-top: var(--space-lg);
+}
+
+.moldViewport {
+  height: min(56vh, 540px);
+  min-height: 300px;
+  background:
+    radial-gradient(70% 60% at 50% 45%, var(--oct-glow-soft), transparent 75%);
+}
+
+.annotationRail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.annotation {
+  display: grid;
+  grid-template-columns: 2.2rem minmax(0, 1fr);
+  gap: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--oct-rule-2);
+  /* inactive steps are de-emphasised but stay readable */
+  opacity: 0.62;
+  transition: opacity var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+}
+
+.annotationActive {
+  opacity: 1;
+  border-left-color: var(--oct-accent-2);
+}
+
+.annotationIndex {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.1em;
+  color: var(--oct-muted);
+  padding-top: 0.2rem;
+}
+
+.annotationTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0;
+  color: var(--oct-ink);
+}
+
+.annotationBody {
+  margin: var(--space-2xs) 0 0;
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--oct-ink-2);
+}
+
+/* ── Stage 02 · Harness board ──────────────────────────────────────── */
+
+.harness {
+  padding-top: var(--space-3xl);
+}
+
+.harnessBoard {
+  margin-top: var(--space-xl);
+  border: 1px solid var(--oct-rule-2);
+  border-radius: var(--radius-md);
+  background: var(--oct-paper-2);
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.harnessSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.boardFrame {
+  fill: var(--oct-board);
+  stroke: var(--oct-rule-2);
+}
+
+.boardDot {
+  fill: var(--oct-board-dot);
+}
+
+.wire,
+.wireTrunk {
+  fill: none;
+  stroke: var(--oct-wire);
+  stroke-linecap: round;
+  stroke-width: 5;
+}
+
+.wireTrunk {
+  stroke-width: 7;
+  stroke: var(--oct-wire-trunk);
+}
+
+.wireFlow {
+  fill: none;
+  stroke: var(--oct-accent-2);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 4 16;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wireFlow {
+    animation: flowPulse 1.4s linear infinite;
+  }
+}
+
+@keyframes flowPulse {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.connectorBlock rect:first-of-type,
+.connectorHousing {
+  fill: var(--oct-paper-3);
+  stroke: var(--oct-rule);
+}
+
+.connectorPin {
+  fill: var(--oct-muted);
+}
+
+.cableTie {
+  fill: var(--oct-tie);
+}
+
+.junction {
+  fill: var(--oct-accent-2);
+}
+
+.boardLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  fill: var(--oct-muted);
+}
+
+.harnessBoard[data-static='true'] [data-flow] {
+  opacity: 1;
+  animation: none;
+}
+
+.calloutRow {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin: var(--space-lg) 0 0;
+  padding: 0;
+}
+
+.callout {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--oct-ink-2);
+  border: 1px solid var(--oct-rule);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.8rem;
+}
+
+/* ── Stage 03 · Process ────────────────────────────────────────────── */
+
+.process {
+  padding-top: var(--space-3xl);
+}
+
+.processRailTrack {
+  height: 2px;
+  background: var(--oct-rule-2);
+  margin-top: var(--space-xl);
+  overflow: hidden;
+}
+
+.processRail {
+  height: 100%;
+  background: var(--oct-accent-2);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .processRail {
+    transform: scaleX(1);
+  }
+}
+
+.stationRow {
+  list-style: none;
+  margin: var(--space-lg) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-lg);
+}
+
+.station {
+  min-width: 0;
+}
+
+.stationGlyph {
+  width: 44px;
+  height: 44px;
+  fill: none;
+  stroke: var(--oct-ink-2);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stationIndex {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.12em;
+  color: var(--oct-accent-2);
+  margin: var(--space-sm) 0 0;
+}
+
+.stationTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--oct-ink);
+  margin: var(--space-2xs) 0 0;
+}
+
+.stationBody {
+  margin: var(--space-2xs) 0 0;
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--oct-ink-2);
+}
+
+/* ── Stage 04 · Showcase ───────────────────────────────────────────── */
+
+.showcase {
+  padding-top: var(--space-3xl);
+}
+
+.showcaseGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.45fr) minmax(0, 1fr);
+  gap: var(--space-2xl);
+  margin-top: var(--space-xl);
+  align-items: start;
+}
+
+.partTabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.partTab {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-align: left;
+  color: var(--oct-ink-2);
+  background: transparent;
+  border: 1px solid var(--oct-rule-2);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+.partTab:hover {
+  color: var(--oct-ink);
+  background: var(--oct-paper-2);
+}
+
+.partTab:active {
+  background: var(--oct-paper-3);
+}
+
+.partTab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.partTabActive {
+  color: var(--oct-ink);
+  border-color: var(--oct-accent-2);
+  background: var(--oct-paper-2);
+}
+
+.partSummary {
+  margin: var(--space-lg) 0 0;
+  font-size: var(--text-base);
+  line-height: 1.8;
+  color: var(--oct-ink-2);
+}
+
+.specList {
+  margin: var(--space-md) 0 0;
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: 6.4rem minmax(0, 1fr);
+  gap: var(--space-sm);
+  border-top: 1px solid var(--oct-rule-2);
+  padding-block: var(--space-xs);
+}
+
+.specRow dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--oct-muted);
+  padding-top: 0.15rem;
+}
+
+.specRow dd {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--oct-ink-2);
+}
+
+.showcaseViewport {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  max-height: 560px;
+  border: 1px solid var(--oct-rule-2);
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(80% 70% at 50% 38%, var(--oct-stage-glow), var(--oct-stage-deep) 80%);
+  overflow: clip;
+}
+
+.viewportHint {
+  position: absolute;
+  bottom: var(--space-sm);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--oct-muted);
+  margin: 0;
+  pointer-events: none;
+}
+
+/* ── Stage 05 · Ecosystem ──────────────────────────────────────────── */
+
+.ecosystem {
+  padding-top: var(--space-3xl);
+}
+
+.ecosystemGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: var(--space-2xl);
+  margin-top: var(--space-xl);
+  align-items: center;
+}
+
+.flowPanel {
+  border: 1px solid var(--oct-rule-2);
+  border-radius: var(--radius-md);
+  background: var(--oct-paper-2);
+  padding: clamp(1rem, 2.5vw, 2rem);
+}
+
+.flowSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.flowRail {
+  stroke: var(--oct-rule);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 8;
+  fill: none;
+}
+
+.flowTop {
+  fill: var(--oct-iso-top);
+  stroke: var(--oct-iso-top-edge);
+  stroke-width: 1;
+}
+
+.flowLeft {
+  fill: var(--oct-iso-left);
+  stroke: var(--oct-rule);
+  stroke-width: 1;
+}
+
+.flowRight {
+  fill: var(--oct-iso-right);
+  stroke: var(--oct-rule);
+  stroke-width: 1;
+}
+
+.flowArrow {
+  stroke: var(--oct-accent-2);
+  stroke-width: 1.6;
+  fill: none;
+}
+
+.statList {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.statRow {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid var(--oct-rule);
+  padding-block: var(--space-md);
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--oct-muted);
+}
+
+.statValue {
+  margin: var(--space-2xs) 0 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-stat);
+  line-height: 1;
+  color: var(--oct-ink);
+}
+
+.industriesRow {
+  margin-top: var(--space-2xl);
+  border-top: 1px solid var(--oct-rule-2);
+  padding-top: var(--space-lg);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-md) var(--space-2xl);
+}
+
+.industriesTitle {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--oct-muted);
+  margin: 0;
+}
+
+.industriesList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-lg);
+}
+
+.industry {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--oct-ink-2);
+}
+
+.certStrip {
+  margin-top: var(--space-2xl);
+}
+
+.certHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.certHead .stageLink {
+  margin-top: 0;
+}
+
+.certRow {
+  list-style: none;
+  margin: var(--space-md) 0 0;
+  padding: 0 0 var(--space-xs);
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: var(--oct-rule) transparent;
+}
+
+.certRow::-webkit-scrollbar {
+  height: 6px;
+}
+
+.certRow::-webkit-scrollbar-thumb {
+  background: var(--oct-rule);
+  border-radius: 3px;
+}
+
+.certRow::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.certItem {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.certImage {
+  display: block;
+  width: 150px;
+  height: auto;
+  border: 1px solid var(--oct-rule);
+  border-radius: var(--radius-sm);
+  background: var(--oct-ink);
+  filter: grayscale(0.35);
+  transition: filter var(--dur-base) var(--ease-out);
+}
+
+.certImage:hover {
+  filter: grayscale(0);
+}
+
+/* ── Final CTA ─────────────────────────────────────────────────────── */
+
+.finalCta {
+  margin-block: var(--space-3xl);
+  border: 1px solid var(--oct-rule);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--oct-paper-2), var(--oct-paper-3));
+  padding: clamp(2.5rem, 6vw, 4.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.finalTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-title);
+  line-height: 1.04;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin: 0;
+  color: var(--oct-ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.finalBody {
+  margin: var(--space-sm) 0 0;
+  max-width: 52ch;
+  font-size: var(--text-base);
+  line-height: 1.8;
+  color: var(--oct-ink-2);
+}
+
+/* ── Responsive ────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .moldGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .moldViewport {
+    height: min(34vh, 360px);
+    min-height: 220px;
+  }
+
+  .annotationRail {
+    gap: var(--space-xs);
+  }
+
+  .annotationBody {
+    display: none;
+  }
+
+  .annotation.annotationActive .annotationBody {
+    display: block;
+  }
+
+  .moldSticky .stageLede {
+    display: none;
+  }
+
+  .showcaseGrid,
+  .ecosystemGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .showcaseGrid > .showcaseViewport {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .moldWrap {
+    height: 220vh;
+  }
+
+  .annotation:not(.annotationActive) {
+    display: none;
+  }
+
+  .annotationRail .annotationActive {
+    display: grid;
+  }
+
+  .stationRow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-md);
+  }
+
+  .station {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: var(--space-sm) var(--space-md);
+  }
+
+  .stationGlyph {
+    grid-row: span 3;
+  }
+
+  .flowPanel {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--oct-rule) transparent;
+  }
+
+  .flowSvg {
+    min-width: 620px;
+  }
+
+  .partTabs {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .partTab {
+    font-size: 1rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .finalCta {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .heroHud {
+    display: none;
+  }
+}
+
+@media (max-width: 414px) {
+  .heroCtas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta {
+    width: 100%;
+  }
+
+  .specRow {
+    grid-template-columns: 5.2rem minmax(0, 1fr);
+  }
+
+  .certImage {
+    width: 124px;
+  }
+}
+
+/* ── Reduced motion ────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .page * {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
+
+  .moldWrap {
+    height: auto;
+  }
+
+  .moldSticky {
+    position: static;
+    height: auto;
+  }
+
+  .annotation {
+    opacity: 1;
+  }
+
+  .annotation:not(.annotationActive) {
+    display: grid;
+  }
+}

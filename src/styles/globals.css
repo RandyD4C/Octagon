@@ -6,11 +6,17 @@
 @tailwind utilities;
 
 /* Custom global styles */
+html,
+body {
+  /* clip, not hidden — hidden creates a scroll container that can break
+     position: sticky used by the homepage 3D sections */
+  overflow-x: clip;
+}
+
 body {
   @apply text-slate-900 bg-white selection:bg-blue-100 selection:text-blue-900;
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 h1,
